@@ -33,6 +33,7 @@ class cambium : public QObject, SimPluginInterface {
         Q_PLUGIN_METADATA(IID "org.virtualleaf.cambium")
 
 public:
+	cambium();
 	virtual QString ModelID(void);
 	
 	// Executed after the cellular mechanics steps have equillibrized
@@ -55,6 +56,9 @@ public:
 	// return number of chemicals
 	virtual int NChem(void);
 	virtual QString DefaultLeafML(void) { return QString("cambium.xml"); }
+private:
+	// bark_cells should be defined in cambium.h, not here
+     std::vector<int> bark_cells;
 
 };
 
