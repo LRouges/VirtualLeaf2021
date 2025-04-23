@@ -383,7 +383,14 @@ class CellBase :  public QObject, public Vector
       }
       return n;
   }
-
+  // RamiNote: To access neighbor indices, add this method to cellbase.h in the public section:
+  std::vector<int> GetNeighborIndices() const {
+    std::vector<int> indices;
+    for (auto neighbor : neighbors) {
+        indices.push_back(neighbor->Index());
+    }
+    return indices;
+  }
   //! Returns the sum of chemical "chem" of this CellBase's neighbors
   double SumChemicalsOfNeighbors(int chem)
   {
