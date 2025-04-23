@@ -54,18 +54,12 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
     // Check if daughter cells are neighbors with any bark cells
     bool d1_neighbors_bark = false;
     bool d2_neighbors_bark = false;
-    bool d1_neighbors_cell30 = false;
-    bool d2_neighbors_cell30 = false;
 
     // Check daughter1's neighbors
     for (auto idx : d1_neighbor_indices) {
         if (std::find(bark_cells.begin(), bark_cells.end(), idx) != bark_cells.end()) {
             d1_neighbors_bark = true;
             qDebug() << "Daughter1 (ID:" << daughter1->Index() << ") is neighbor with bark cell ID:" << idx;
-        }
-        if (idx == 30) {
-            d1_neighbors_cell30 = true;
-            qDebug() << "Daughter1 (ID:" << daughter1->Index() << ") is neighbor with cell 30";
         }
     }
 
@@ -75,47 +69,27 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
             d2_neighbors_bark = true;
             qDebug() << "Daughter2 (ID:" << daughter2->Index() << ") is neighbor with bark cell ID:" << idx;
         }
-        if (idx == 30) {
-            d2_neighbors_cell30 = true;
-            qDebug() << "Daughter2 (ID:" << daughter2->Index() << ") is neighbor with cell 30";
-        }
     }
 
     // Handle the case where both daughter cells are neighbors to bark cells
     if (d1_neighbors_bark && d2_neighbors_bark) {
-        // Check if both cells are also neighbors to cell 30
-        if (d1_neighbors_cell30 && d2_neighbors_cell30) {
-            qWarning() << "WARNING: Both daughter cells are neighbors to bark cells AND cell 30!";
-        }
-
-        // Set cell types based on which one neighbors cell 30
-        if (d1_neighbors_cell30) {
-            daughter1->SetCellType(3);
-            daughter2->SetCellType(1);
-            bark_cells.push_back(daughter2->Index());
-        } else if (d2_neighbors_cell30) {
-            daughter1->SetCellType(1);
-            daughter2->SetCellType(3);
-            bark_cells.push_back(daughter1->Index());
-        } else {
-            // Default behavior if neither neighbors cell 30
-            daughter1->SetCellType(1);
-            bark_cells.push_back(daughter1->Index());
-            daughter2->SetCellType(3);
-        }
+        // Both cells become type 3 (bark cells)
+        daughter1->SetCellType(3);
+        daughter2->SetCellType(3);
+//        bark_cells.push_back(daughter1->Index());
+//        bark_cells.push_back(daughter2->Index());
     }
     // Handle cases where only one daughter cell is neighbor to bark cells
     else if (d1_neighbors_bark) {
-        daughter1->SetCellType(1);
-        bark_cells.push_back(daughter1->Index());
-        daughter2->SetCellType(3);
+        daughter1->SetCellType(3);
+//        bark_cells.push_back(daughter1->Index());
+        daughter2->SetCellType(1);
     }
     else if (d2_neighbors_bark) {
-        daughter2->SetCellType(1);
-        bark_cells.push_back(daughter2->Index());
-        daughter1->SetCellType(3);
+        daughter2->SetCellType(3);
+//        bark_cells.push_back(daughter2->Index());
+        daughter1->SetCellType(1);
     }
-
 
     // Debug print to confirm new cell types
     qDebug() << "New cell types - Daughter1 (ID:" << daughter1->Index() << ") is now type:" << daughter1->CellType()
@@ -127,7 +101,6 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
         qDebug() << "  Bark cell ID:" << id;
     }
 }
-
 
 void cambium::SetCellColor(CellBase *c, QColor *color) {
   // Simplified cell coloring rules without chemical dependencies
