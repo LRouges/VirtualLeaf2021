@@ -383,6 +383,9 @@ class CellBase :  public QObject, public Vector
       }
       return n;
   }
+
+
+  const list<Node *>& getNodes() const { return nodes; } // Ajout Rouges 2025
   // RamiNote: To access neighbor indices, add this method to cellbase.h in the public section:
   std::vector<int> GetNeighborIndices() const {
     std::vector<int> indices;

@@ -53,80 +53,95 @@ static const std::string _module_id("$Id$");
 
 extern Parameter par;
 
+/*Inserts a node into a cell at a specific position and updates ownership relationships.
+c  - Pointer to the cell where the node will be inserted
+n  - Pointer to the node to insert
+nb1  - Pointer to the first neighbor node
+nb2  - Pointer to the second neighbor node
+ins_pos - Iterator indicating the insertion position in the cell's node list
+This method provides precise control over the node's position in the cell's topology.*/
 void Mesh::AddNodeToCellAtIndex(Cell *c, Node *n, Node *nb1, Node *nb2, list<Node *>::iterator ins_pos) {
-  c->nodes.insert(ins_pos, n);        
+  c->nodes.insert(ins_pos, n);
   n->owners.push_back( Neighbor(c, nb1, nb2 ) );
 }
 
-
+/* Same but insert the node at the end*/
 void Mesh::AddNodeToCell(Cell *c, Node *n, Node *nb1, Node *nb2) {
-
   c->nodes.push_back( n );
   n->owners.push_back( Neighbor(c, nb1, nb2 ) );
 }
 
+/*Adds random perturbation to the specified chemical concentration in all cells.
+chemnum - Index of the chemical to perturb
+range   - Magnitude of the perturbation
+This method iterates through all cells in the mesh and adds a random value
+to the concentration of the specified chemical. The random value is centered
+around zero (by using RANDOM()-0.5) and scaled by the range parameter.
+If the resulting concentration would be negative, it is set to zero instead.*/
 void Mesh::PerturbChem(int chemnum, double range) {
-
   for (vector<Cell *>::iterator i=cells.begin(); i!=cells.end(); i++) {
     (*i)->chem[chemnum] += range*(RANDOM()-0.5);
     if ((*i)->chem[chemnum]<0.) (*i)->chem[chemnum]=0.;
   }
 }
 
+
+
+ /* Creates a structured grid of cells by dividing a rectangular cell multiple times.
+ ll - Vector representing the lower left corner of the initial rectangle
+ ur - Vector representing the upper right corner of the initial rectangle
+ This method creates an initial rectangular cell and initializes its chemical concentrations
+ based on parameters. It then repeatedly divides all cells in a structured manner by
+ alternating between horizontal and vertical division axes. The method performs 7 rounds
+ of division in total - 6 rounds with axis rotation followed by a final round.
+ After cell division, it calculates the average side length of the cells and sets the
+ target length for nodes to a fraction of this average (creating tension in the structure).
+ Finally, it establishes the base area for the mesh using the current cell configuration.*/
 void Mesh::CellFiles(const Vector ll, const Vector ur) {
-
-  Cell *cell = RectangularCell(ll,ur,0.001); 
-
+  Cell *cell = RectangularCell(ll,ur,0.001);
   for (int c=0;c<Cell::NChem();c++) {
     cell->SetChemical(c,par.initval[c]);
   }
 
   cell->SetTargetArea(cell->CalcArea());
-
   Vector axis(1,0,0);
 
   // divide rectangle a number of times
   for (int i=0;i<6;i++) {
     IncreaseCellCapacityIfNecessary();
-
     vector <Cell *> current_cells = cells;
     for (vector<Cell *>::iterator j=current_cells.begin(); j!=current_cells.end();j++) {
       (*j)->DivideOverAxis(axis);
     }
     axis=axis.Perp2D();
-
   }
 
   IncreaseCellCapacityIfNecessary();
-
   axis=axis.Perp2D();
-
   vector <Cell *> current_cells = cells;
   for (vector<Cell *>::iterator j=current_cells.begin(); j!=current_cells.end();j++) {
     (*j)->DivideOverAxis(axis);
   }
 
-
   double sum_l=0; int n_l=0;
   for (list<Node *>::const_iterator i=cell->nodes.begin(); i!=cell->nodes.end(); i++) {
-    list<Node *>::const_iterator nb=i; nb++; 
-    if (nb==cell->nodes.end()) 
+    list<Node *>::const_iterator nb=i; nb++;
+    if (nb==cell->nodes.end())
       nb=cell->nodes.begin();
 
     double l = (**nb-**i).Norm();
-
     sum_l += l;
     n_l++;
 
   }
 
-
   Node::target_length = sum_l/(double)n_l;
   // a bit more tension
   Node::target_length/=4.;
-
   SetBaseArea();
 }
+
+
 
 Cell *Mesh::RectangularCell(const Vector ll, const Vector ur, double rotation) {
 
@@ -148,33 +163,33 @@ Cell *Mesh::RectangularCell(const Vector ll, const Vector ur, double rotation) {
 
   //n1.fixed=n2.fixed=n3.fixed=n4.fixed=true;
 
-  AddNodeToCell(cell, n4, 
+  AddNodeToCell(cell, n4,
 		n1,
 		n3);
 
-  AddNodeToCell(cell, n3, 
+  AddNodeToCell(cell, n3,
 		n4,
 		n2);
 
-  AddNodeToCell(cell, n2, 
+  AddNodeToCell(cell, n2,
 		n3,
 		n1);
 
-  AddNodeToCell(cell, n1, 
+  AddNodeToCell(cell, n1,
 		n2,
 		n4);
 
 
-  AddNodeToCell(boundary_polygon, n4, 
+  AddNodeToCell(boundary_polygon, n4,
 		n1,
 		n3);
-  AddNodeToCell(boundary_polygon, n3, 
+  AddNodeToCell(boundary_polygon, n3,
 		n4,
 		n2);
-  AddNodeToCell(boundary_polygon, n2, 
+  AddNodeToCell(boundary_polygon, n2,
 		n3,
 		n1);
-  AddNodeToCell(boundary_polygon, n1, 
+  AddNodeToCell(boundary_polygon, n1,
 		n2,
 		n4);
 
@@ -190,7 +205,7 @@ Cell *Mesh::RectangularCell(const Vector ll, const Vector ur, double rotation) {
   // a bit more tension
   Node::target_length/=2;
 
-  cell->SetIntegrals(); 
+  cell->SetIntegrals();
   cell->ConstructNeighborList();
 
   return cell;
@@ -216,7 +231,7 @@ Cell &Mesh::EllipticCell(double xc, double yc, double ra, double rb,  int nnodes
     Node *n=AddNode(new Node(x,y,0));
     n->boundary = true;
 
-  } 
+  }
 
   for (int i=0;i<nnodes;i++) {
 
@@ -240,7 +255,7 @@ Cell &Mesh::EllipticCell(double xc, double yc, double ra, double rb,  int nnodes
   // a bit more tension
   Node::target_length/=2;
 
-  c->SetIntegrals(); 
+  c->SetIntegrals();
   c->at_boundary=true;
 
   return *c;
@@ -287,7 +302,7 @@ Cell &Mesh::LeafPrimordium(int nnodes, double pet_length) {
   // a bit more tension
   Node::target_length/=2;
 
-  circle->SetIntegrals(); 
+  circle->SetIntegrals();
 
   //return c;
 
@@ -297,7 +312,7 @@ Cell &Mesh::LeafPrimordium(int nnodes, double pet_length) {
   // get position of the (n/4)'th and (3*(n/4))'th node.
 
   list<Node *>::reverse_iterator it_n1=circle->nodes.rbegin();
-  for (int i=0; i<nnodes/2; i++) 
+  for (int i=0; i<nnodes/2; i++)
     it_n1++;
   it_n1--;
 
@@ -314,9 +329,9 @@ Cell &Mesh::LeafPrimordium(int nnodes, double pet_length) {
   n3->boundary=true;
   n4->boundary=true;
 
-  AddNodeToCell(petiole, *it_n1, 
+  AddNodeToCell(petiole, *it_n1,
 		n4,
-		nodes[(*it_n2)->Index() 
+		nodes[(*it_n2)->Index()
 		      + (( (*it_n1)->Index() - (*it_n2)->Index() )-1+nnodes)%nnodes]);
 
 
@@ -336,7 +351,7 @@ Cell &Mesh::LeafPrimordium(int nnodes, double pet_length) {
   AddNodeToCell(petiole, n4, n3, n1);
 
 
-#ifdef QDEBUG  
+#ifdef QDEBUG
   qDebug() << circle << endl;
   qDebug() << petiole << endl;
 #endif
@@ -368,7 +383,7 @@ Cell &Mesh::LeafPrimordium(int nnodes, double pet_length) {
   petiole->Fix();
 
   petiole->area=petiole->CalcArea();
-  petiole->target_area=petiole->area;  
+  petiole->target_area=petiole->area;
   petiole->ConstructNeighborList();
   circle->ConstructNeighborList();
   boundary_polygon->ConstructConnections();
@@ -395,9 +410,9 @@ void Mesh::BoundingBox(Vector &LowerLeft, Vector &UpperRight) {
       LowerLeft.y = (*c)->y;
     if ((*c)->z < LowerLeft.z)
       LowerLeft.z = (*c)->z;
-    if ((*c)->x > UpperRight.x) 
+    if ((*c)->x > UpperRight.x)
       UpperRight.x = (*c)->x;
-    if ((*c)->y > UpperRight.y) 
+    if ((*c)->y > UpperRight.y)
       UpperRight.y = (*c)->y;
     if ((*c)->z > UpperRight.z)
       UpperRight.z = (*c)->z;
@@ -417,7 +432,7 @@ double Mesh::Area(void) {
 
 void Mesh::SetBaseArea(void) {
 
-  // Set base area to mean area. 
+  // Set base area to mean area.
   // This method is typically called during initiation, after
   // defining the first cell
   Cell::BaseArea() = Area()/cells.size();
@@ -441,8 +456,9 @@ public:
   }
 };
 
-void Mesh::Clear(void) {
 
+
+void Mesh::Clear(void) {
   // clear nodes
   for (vector<Node *>::iterator i=nodes.begin(); i!=nodes.end(); i++) {
     delete *i;
@@ -450,8 +466,8 @@ void Mesh::Clear(void) {
 
   nodes.clear();
   Node::nnodes=0;
-
   node_insertion_queue.clear();
+
   // Clear NodeSets
   for (vector<NodeSet *>::iterator i=node_sets.begin(); i!=node_sets.end(); i++) {
     delete *i;
@@ -461,7 +477,6 @@ void Mesh::Clear(void) {
   time = 0;
 
   // clear cells
-
   for (vector<Cell *>::iterator i=cells.begin(); i!=cells.end(); i++) {
     delete *i;
   }
@@ -485,7 +500,7 @@ void Mesh::Clear(void) {
 
   shuffled_cells.clear();
   shuffled_nodes.clear();
- 
+
 #ifdef QDEBUG
   qDebug() << "cells.size() = " << cells.size() << endl;
   qDebug() << "walls.size() = " << walls.size() << endl;
@@ -493,6 +508,23 @@ void Mesh::Clear(void) {
 #endif
 }
 
+
+
+/* Calculates cell-specific wall stiffness for one side of a node connection.
+Parameters:
+nb - Pointer to a neighbor node
+nodeown - Set of indices of cells that own the current node
+
+This function determines the stiffness contribution from cells that are common
+to both the current node and its neighbor. It first creates a set of cell indices
+that own the neighbor node, then finds the intersection between this set and the
+nodeown set. For each cell in the intersection, it adds its wall stiffness value
+to the total (either from the cell's specific stiffness value or from the global
+parameter if the cell index is invalid).
+The function breaks early if an invalid (NaN) stiffness value is encountered.
+
+Returns:
+The calculated total stiffness value for the shared cells.*/
 double Mesh::CellSpecificStiffnessOneSide(Node *nb,set<int> &nodeown) {
     // determines the list of cells belonging to the node and its neighbors
     set<int> nb1own;
@@ -514,6 +546,9 @@ double Mesh::CellSpecificStiffnessOneSide(Node *nb,set<int> &nodeown) {
     }
     return cell_w;
 }
+
+
+
 void Mesh::updateAreasOfCells(list<DeltaIntgrl> * delta_intgrl_list,Node * node) {
 
 	// update areas of cells
@@ -533,6 +568,20 @@ void Mesh::updateAreasOfCells(list<DeltaIntgrl> * delta_intgrl_list,Node * node)
 	}
 }
 
+/* Finds a cell that is common to the specified nodes, different from the given cell.
+
+Parameters:
+c - Pointer to a cell to exclude from the search
+node1 - Pointer to the first node
+node2 - Pointer to the second node
+
+This function iterates through the owners of both nodes to find a cell
+that is connected to both node1 and node2, but is not the cell c.
+It first iterates through node1's owners, then for each owner that is
+not c, it checks if it's also an owner of node2.
+
+Returns:
+A pointer to the common cell found, or NULL if no common cell is found. */
 CellBase * Mesh::getOtherCell(CellBase* c,Node* node1,Node * node2) {
     for (list<Neighbor>::iterator nb1=node1->owners.begin(); nb1!=node1->owners.end(); nb1++) {
     	if (nb1->getCell() != c) {
@@ -559,9 +608,9 @@ double b_cocient(const Vector& AC, const Vector& AB,const Vector& ACperp, const 
 	return b;
 }
 
-//http://dx.doi.org/10.1016/j.cis.2014.01.018
-// radius of circle with center on line B-C and connecting at norm of the lines (A-B ode A-C)
-// and sharing one point with the other line. This we define the kissing circle
+/*http://dx.doi.org/10.1016/j.cis.2014.01.018
+radius of circle with center on line B-C and connecting at norm of the lines (A-B ode A-C)
+and sharing one point with the other line. This we define the kissing circle*/
 double osculating_circle_radius(const Vector& B, const Vector& A, const Vector& C) {
 	Vector AC = (C-A).Normalised();
 	Vector AB = (B-A).Normalised();
@@ -583,6 +632,27 @@ double osculating_circle_radius(const Vector& B, const Vector& A, const Vector& 
 
 }
 
+
+/* Searches for a sequence of four consecutive nodes in a cell where two specific nodes
+are in the middle positions.
+
+Parameters:
+c - Pointer to the cell to search in
+z1, z2 - Pointers to the two specific nodes to find in middle positions
+w0, w1, w2, w3 - Pointers to node pointers that will be updated with the found sequence
+
+This function looks for a sequence of four consecutive nodes in the cell's node list
+where w1 and w2 are equal to z1 and z2 (in any order). It uses a sliding window approach,
+first checking the regular sequence of nodes, then checking wrap-around cases by considering
+nodes from the beginning of the list. This accounts for the circular nature of cell boundaries.
+
+If a matching sequence is found, the function updates w0, w1, w2, and w3 to point to the
+four consecutive nodes and returns true. If no match is found, it sets all pointers to NULL
+and returns false.
+
+Returns:
+true if a sequence containing z1 and z2 in middle positions was found
+false otherwise */
 bool Mesh::findOtherSide(CellBase * c,Node * z1,Node * z2,Node ** w0,Node ** w1,Node ** w2,Node ** w3) {
 	list <Node *>::iterator i=c->nodes.begin();
 	* w0=*i;
@@ -625,8 +695,25 @@ bool Mesh::findOtherSide(CellBase * c,Node * z1,Node * z2,Node ** w0,Node ** w1,
 	*w3=NULL;
 	return false;
 }
-double lambda_for_shift=0.1;
 
+
+double lambda_for_shift=0.1; // Définie en global mais n'est utilisée nulle part, Rouges 2025
+
+/* Retrieves the base length of a wall element between two nodes in a cell.
+
+Parameters:
+c - Pointer to the cell containing the wall element
+n1 - Pointer to the first node
+n2 - Pointer to the second node
+elastic_limit - Factor used to calculate a default length when needed
+
+This function first tries to get the wall element associated with node n1 in cell c.
+If no wall element exists or if its base length is invalid (NaN), it calculates
+a default length by dividing the distance between the two nodes by the elastic_limit.
+Otherwise, it returns the actual base length stored in the wall element.
+
+Returns:
+The base length of the wall element, or a calculated default value if unavailable */
 double getBaseLength(CellBase* c,NodeBase* n1, NodeBase * n2,double elastic_limit) {
 	WallElement* wallElement = n1->getWallElement(c);
 	if (wallElement == NULL) {
@@ -640,6 +727,20 @@ double getBaseLength(CellBase* c,NodeBase* n1, NodeBase * n2,double elastic_limi
 	}
 }
 
+
+/* Retrieves the stiffness of a wall element associated with a node in a cell.
+
+Parameters:
+c - Pointer to the cell containing the wall element
+n1 - Pointer to the node whose wall element stiffness is needed
+
+This function first tries to get the wall element associated with node n1 in cell c.
+If no wall element exists or if its stiffness value is invalid (NaN), it returns
+the default wall stiffness from the cell. Otherwise, it returns the actual stiffness
+value stored in the wall element.
+
+Returns:
+The stiffness of the wall element, or the cell's default wall stiffness if unavailable */
 double getStiffness(CellBase* c,NodeBase* n1) {
 	WallElement* wallElement = n1->getWallElement(c);
 	if (wallElement == NULL) {
@@ -653,12 +754,41 @@ double getStiffness(CellBase* c,NodeBase* n1) {
 	}
 }
 
+
+/* RemodelWallElement - Evaluates and potentially executes wall remodeling between connected cells
+
+Parameters:
+- curves: Vector of CellWallCurve objects to store modified wall information
+- c: Pointer to the current cell being processed
+- w0, w1, w2, w3, w4: Five consecutive nodes in the current cell
+
+This function evaluates whether inserting a new connection between nodes w1 and w3
+(replacing the w1-w2 connection) would be energetically favorable. The process:
+
+1. First identifies the neighboring cell (c2) that shares nodes w1 and w2
+2. If a valid neighbor cell is found, locates the corresponding sequence of nodes
+   in that cell using findOtherSide (nodes o0-o1-o2-o3)
+3. Calculates the energy of the current configuration using osculating circle radius
+4. Calculates the predicted energy if the remodeling were performed
+5. If the new configuration has lower energy, performs the remodeling by:
+   - Updating node connections in both cells
+   - Updating the geometric properties of affected walls
+   - Recalculating cell areas and neighbor relationships
+
+The function implements a key biological process where cell walls dynamically
+reorganize to minimize mechanical stress and optimize tissue geometry.
+
+Returns: void (modifies the mesh structure directly)
+
+Implemented by Großeholz and al.
+*/
 void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w0,Node* w1,Node* w2,Node* w3,Node* w4) {
 
 	Node * o0;
 	Node * o1;
 	Node * o2;
 	Node * o3;
+
 	double angle = (*w1-*w2).SignedAngle((*w3-*w2));
 	if ((angle>0&&c->BoundaryPolP())||(angle<0&&!c->BoundaryPolP())) {
 		//we would bend inward and intersect cells
@@ -666,15 +796,14 @@ void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w
 	}
 
 	CellBase* c2 = getOtherCell(c,w1,w2);
-    if (c2 != NULL && !(c2->GetCellVeto()) && findOtherSide(c2,w2,w1,&o0,&o1,&o2,&o3)){
-
+    if (c2 != NULL && !(c2->GetCellVeto()) && findOtherSide(c2,w2,w1,&o0,&o1,&o2,&o3)){ //
 
 //now check how profitable the move of wall element w1-w2 to w1-w3
 //this changes also cell c2 where wall element o1->o2 will be replaced
 //by wall elements o1->w3 and w3->o2 all other surrounding cells will remain
 //unchanged.
 		double bending_dh = 0.;
-		if (abs(par.bend_lambda) > 0.01)	  {
+		if (abs(par.bend_lambda) > 0.01)	  { // c'est quoi le critère qui définit la valeur de bend_lambda? , Rouges 2025
 	// angles that are before w0-w1-w2/w1-w2-w3/w2-w3-w4 and o0-o1-o2/o1-o2-o3
 	// angles after move w0-w1-w3/w1-w3-w4 and o0-o1-w3/o1-w3-o2/w3-o2-o3
 			double r1 = osculating_circle_radius(*w0,*w1,*w2);
@@ -682,24 +811,29 @@ void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w
 			double r3 = osculating_circle_radius(*w2,*w3,*w4);
 			double r4 = osculating_circle_radius(*w0,*w1,*w3);
 			double r5 = osculating_circle_radius(*w1,*w3,*w4);
+
 			double energy_before =
 					1./(r1)+
 					1./(r2)+
 					1./(r3)+
 					1./((osculating_circle_radius(*o0,*o1,*o2)))+
 					1./((osculating_circle_radius(*o1,*o2,*o3)));
+
 			double energy_after =
 					1./(r4)+
 					1./((osculating_circle_radius(*o1,*w3,*o2)))+
 					1./(r5)+
 					1./((osculating_circle_radius(*o0,*o1,*w3)))+
 					1./((osculating_circle_radius(*w3,*o2,*o3)));
-			bending_dh = par.bend_lambda*(energy_after-energy_before*1.5+12.);
+
+			bending_dh = par.bend_lambda*(energy_after-energy_before*1.5+12.); // comment sont définis ces coefficients (*1.5 et +12)?, Rouges 2025
 		}
+
 		// the length contraint just needs to be calculated for the wall elements that change length
 		double wl1=((*w1)-(*w2)).Norm();
 		double wl2=((*w3)-(*w2)).Norm();
 		double wl3=((*w1)-(*w3)).Norm();
+
 		double s_bef = wl1;
 		double s_aft = wl3+wl2;
 
@@ -708,7 +842,7 @@ void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w
 
 		double length_before = wl1+wl2+wl1;
 
-		double stiffness = (
+		double stiffness = ( // Pourquoi j'ai pas getStiffness(c2,01)*wl2 ?, Rouges 2025
 				getStiffness(c, w1)*wl1+
 				getStiffness(c, w2)*wl2+
 				getStiffness(c2, o2)*wl1
@@ -750,6 +884,21 @@ void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w
 	}
 }
 
+
+/* Extracts base length and stiffness data from a wall element and adds them to provided variables.
+Parameters:
+we: Pointer to the wall element from which to extract data
+base_length: Reference to variable where the base length will be accumulated
+stiffness: Reference to variable where the stiffness will be accumulated
+If the wall element is valid (not NULL):
+Accumulates its base length to the base_length parameter
+For stiffness, checks if the wall element has a valid stiffness value:
+If valid: adds the actual stiffness value
+If invalid (NaN): adds the default stiffness from the wall element's cell
+If the wall element is NULL:
+Sets both base_length and stiffness to NaN to indicate invalid data
+This function is typically used in calculations involving wall properties where
+data needs to be aggregated across multiple wall elements while handling edge cases. */
 void extractData(WallElement *we,double & base_length,double &stiffness) {
 	if (we != NULL) {
 		base_length += we->getBaseLength();
@@ -763,6 +912,8 @@ void extractData(WallElement *we,double & base_length,double &stiffness) {
 		stiffness=std::nan("1");
 	}
 }
+
+
 
 void Mesh::RemodelCellWallElements(vector<CellWallCurve> & curves,CellBase *c) {
 	//The algorithm needs at least 5 nodes along the wall
@@ -809,6 +960,11 @@ void Mesh::RemodelCellWallElements(vector<CellWallCurve> & curves,CellBase *c) {
 	RemodelWallElement(curves,c,w0,w1,w2,w3,w4) ;
 }
 
+
+/*This function iterates over all cells in the mesh and resets their wall curves.
+For each cell that is not vetoed (i.e., not excluded from processing), it calls RemodelCellWallElements to attempt remodeling of its wall elements.
+After processing all regular cells, it also applies the remodeling to the boundary polygon to ensure the mesh boundary is updated.
+The function always returns 0.0, indicating its main purpose is to perform side effects on the mesh structure.*/
 double Mesh::RemodelWallElements(vector<CellWallCurve> & curves) {
 	for (vector<Cell *>::iterator ii=cells.begin(); ii!=cells.end(); ii++) {
 		Cell *c = *ii;
@@ -820,6 +976,8 @@ double Mesh::RemodelWallElements(vector<CellWallCurve> & curves) {
 	RemodelCellWallElements(curves,boundary_polygon);
 	return 0.0;
 }
+
+
 
 double Mesh::DisplaceNodes(void) {
 

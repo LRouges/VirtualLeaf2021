@@ -62,7 +62,7 @@ public:
 	virtual void SetCellColor(CellBase *c, QColor *color);
 	// return number of chemicals
 	virtual int NChem(void);
-	virtual QString DefaultLeafML(void) { return QString("cambium.xml"); }
+	virtual QString DefaultLeafML(void) { return QString("cambium.XML"); }
 
 	virtual void SetCellTypeProperties(CellBase *c);
 
