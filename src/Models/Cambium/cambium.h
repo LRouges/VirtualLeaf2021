@@ -24,7 +24,10 @@
 #include <QObject>
 #include <QtGui>
 #include <QString>
+#include <set>
 #include "simplugin.h"
+
+
 
 
 class cambium : public QObject, SimPluginInterface {
@@ -35,33 +38,46 @@ class cambium : public QObject, SimPluginInterface {
 public:
 	cambium();
 	virtual QString ModelID(void);
-	
-	// Executed after the cellular mechanics steps have equillibrized
+
+	// Executed after the cellular mechanics steps have equilibrium
 	virtual void CellHouseKeeping (CellBase *c);
+
+    virtual void AfficherNoeuds (CellBase *c);
+
+
 	// Differential equations describing transport of chemicals from cell to cell
 	virtual void CelltoCellTransport(Wall *w, double *dchem_c1, double *dchem_c2);
-    
+
 	// Differential equations describing chemical reactions taking place at or near the cell walls
 	// (e.g. PIN accumulation)
 	virtual void WallDynamics(Wall *w, double *dw1, double *dw2);
-	
+
 	// Differential equations describing chemical reactions inside the cells
 	virtual void CellDynamics(CellBase *c, double *dchem);
-	
+
 	// to be executed after a cell division
 	virtual void OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *daughter2);
-	
+
 	// to be executed for coloring a cell
-	virtual void SetCellColor(CellBase *c, QColor *color);	
+	virtual void SetCellColor(CellBase *c, QColor *color);
 	// return number of chemicals
 	virtual int NChem(void);
 	virtual QString DefaultLeafML(void) { return QString("cambium.xml"); }
+
+	virtual void SetCellTypeProperties(CellBase *c);
+
+
+	// For internal use; not to be redefined by end users
+//    virtual void SetParameters(Parameter *pass_pars) { par = pass_pars; }
+//    virtual void SetCellsStaticDatamembers (CellsStaticDatamembers *cells_static_data_members_of_main);
+//
+//protected:
+//    class Parameter *par;
+
 private:
 	// bark_cells should be defined in cambium.h, not here
      std::vector<int> bark_cells;
+     std::set<int> special_division_cells;  // Pour stocker les ID des cellules qui doivent se diviser de manière spéciale
+
 
 };
-
-
-
-

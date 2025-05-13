@@ -16,9 +16,8 @@
 #
 #  Copyright 2010 Roeland Merks.
 #
-
-CONFIG += release
-CONFIG -= debug
+CONFIG += debug
+CONFIG -= release
 CONFIG += plugin
 
 BINDIR = ../../../bin

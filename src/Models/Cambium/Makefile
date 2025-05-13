@@ -14,9 +14,9 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQTGRAPHICS -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -Wno-write-strings -Wno-unused-parameter -fPIC -I/usr/include/libxml2 -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
+DEFINES       = -DQTGRAPHICS -DQT_PLUGIN -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB
+CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -Wno-write-strings -Wno-unused-parameter -fPIC -I/usr/include/libxml2 -g -g3 -DQDEBUG -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I. -I../../Library -I../../GUI -I../../../include -I/home/ardati/anaconda3/include/qt -I/home/ardati/anaconda3/include/qt/QtWidgets -I/home/ardati/anaconda3/include/qt/QtGui -I/home/ardati/anaconda3/include/qt/QtXml -I/home/ardati/anaconda3/include/qt/QtCore -I. -I/home/ardati/anaconda3/include -I/croot/qt-main_1738942799946/_build_env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include -I/croot/qt-main_1738942799946/_build_env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include/libdrm -I/croot/qt-main_1738942799946/_build_env/bin/../x86_64-conda-linux-gnu/sysroot/usr/include -I/home/ardati/anaconda3/mkspecs/linux-g++
 QMAKE         = /home/ardati/anaconda3/bin/qmake
 DEL_FILE      = rm -f
@@ -39,7 +39,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = cambium1.0.0
 DISTDIR = /home/ardati/PycharmProjects/VirtualLeaf2021/src/Models/Cambium/.tmp/cambium1.0.0
 LINK          = g++
-LFLAGS        = -fPIC -Wl,-O1 -Wl,-rpath,/home/ardati/anaconda3/lib -shared
+LFLAGS        = -fPIC -Wl,-rpath,/home/ardati/anaconda3/lib -shared
 LIBS          = $(SUBLIBS) -L../../../lib -lvleaf /home/ardati/anaconda3/lib/libQt5Widgets.so /home/ardati/anaconda3/lib/libQt5Gui.so /home/ardati/anaconda3/lib/libQt5Xml.so /home/ardati/anaconda3/lib/libQt5Core.so -L/croot/qt-main_1738942799946/_build_env/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib64 -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
@@ -745,7 +745,7 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /home/ardati/anaconda3/mkspecs/features/data/dummy.cpp
-	g++ -pipe -Wno-write-strings -Wno-unused-parameter -fPIC -I/usr/include/libxml2 -O2 -Wall -Wextra -dM -E -o moc_predefs.h /home/ardati/anaconda3/mkspecs/features/data/dummy.cpp
+	g++ -pipe -Wno-write-strings -Wno-unused-parameter -fPIC -I/usr/include/libxml2 -g -g3 -DQDEBUG -Wall -Wextra -dM -E -o moc_predefs.h /home/ardati/anaconda3/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_cambium.cpp
 compiler_moc_header_clean:
@@ -1487,7 +1487,14 @@ cambium.o: cambium.cpp /home/ardati/anaconda3/include/qt/QtCore/QObject \
 		../../Library/simplugin.h \
 		/home/ardati/anaconda3/include/qt/QtCore/QtPlugin \
 		/home/ardati/anaconda3/include/qt/QtCore/QMetaType \
-		/home/ardati/anaconda3/include/qt/QtGui/QColor
+		/home/ardati/anaconda3/include/qt/QtGui/QColor \
+		../../GUI/node.h \
+		../../Library/random.h \
+		../../GUI/cell.h \
+		../../GUI/Neighbor.h \
+		/home/ardati/anaconda3/include/qt/QtGui/QMouseEvent \
+		../../GUI/modelelement.h \
+		/home/ardati/anaconda3/include/qt/QtCore/QVector
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cambium.o cambium.cpp
 
 moc_cambium.o: moc_cambium.cpp 
