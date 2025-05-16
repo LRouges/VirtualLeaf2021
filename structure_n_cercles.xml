@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<leaf>
+   <nodes n="60">
+      <node index="0" x="10.0000" y="0.0000"/>
+      <node index="1" x="8.6603" y="5.0000"/>
+      <node index="2" x="5.0000" y="8.6603"/>
+      <node index="3" x="0.0000" y="10.0000"/>
+      <node index="4" x="-5.0000" y="8.6603"/>
+      <node index="5" x="-8.6603" y="5.0000"/>
+      <node index="6" x="-10.0000" y="0.0000"/>
+      <node index="7" x="-8.6603" y="-5.0000"/>
+      <node index="8" x="-5.0000" y="-8.6603"/>
+      <node index="9" x="-0.0000" y="-10.0000"/>
+      <node index="10" x="5.0000" y="-8.6603"/>
+      <node index="11" x="8.6603" y="-5.0000"/>
+      <node index="12" x="11.1141" y="2.9780"/>
+      <node index="13" x="8.1361" y="8.1361"/>
+      <node index="14" x="2.9780" y="11.1141"/>
+      <node index="15" x="-2.9780" y="11.1141"/>
+      <node index="16" x="-8.1361" y="8.1361"/>
+      <node index="17" x="-11.1141" y="2.9780"/>
+      <node index="18" x="-11.1141" y="-2.9780"/>
+      <node index="19" x="-8.1361" y="-8.1361"/>
+      <node index="20" x="-2.9780" y="-11.1141"/>
+      <node index="21" x="2.9780" y="-11.1141"/>
+      <node index="22" x="8.1361" y="-8.1361"/>
+      <node index="23" x="11.1141" y="-2.9780"/>
+      <node index="24" x="13.2392" y="0.0000"/>
+      <node index="25" x="11.4654" y="6.6196"/>
+      <node index="26" x="6.6196" y="11.4654"/>
+      <node index="27" x="0.0000" y="13.2392"/>
+      <node index="28" x="-6.6196" y="11.4654"/>
+      <node index="29" x="-11.4654" y="6.6196"/>
+      <node index="30" x="-13.2392" y="0.0000"/>
+      <node index="31" x="-11.4654" y="-6.6196"/>
+      <node index="32" x="-6.6196" y="-11.4654"/>
+      <node index="33" x="-0.0000" y="-13.2392"/>
+      <node index="34" x="6.6196" y="-11.4654"/>
+      <node index="35" x="11.4654" y="-6.6196"/>
+      <node index="36" x="16.7052" y="0.0000"/>
+      <node index="37" x="16.1359" y="4.3236"/>
+      <node index="38" x="14.4671" y="8.3526"/>
+      <node index="39" x="11.8123" y="11.8123"/>
+      <node index="40" x="8.3526" y="14.4671"/>
+      <node index="41" x="4.3236" y="16.1359"/>
+      <node index="42" x="0.0000" y="16.7052"/>
+      <node index="43" x="-4.3236" y="16.1359"/>
+      <node index="44" x="-8.3526" y="14.4671"/>
+      <node index="45" x="-11.8123" y="11.8123"/>
+      <node index="46" x="-14.4671" y="8.3526"/>
+      <node index="47" x="-16.1359" y="4.3236"/>
+      <node index="48" x="-16.7052" y="0.0000"/>
+      <node index="49" x="-16.1359" y="-4.3236"/>
+      <node index="50" x="-14.4671" y="-8.3526"/>
+      <node index="51" x="-11.8123" y="-11.8123"/>
+      <node index="52" x="-8.3526" y="-14.4671"/>
+      <node index="53" x="-4.3236" y="-16.1359"/>
+      <node index="54" x="-0.0000" y="-16.7052"/>
+      <node index="55" x="4.3236" y="-16.1359"/>
+      <node index="56" x="8.3526" y="-14.4671"/>
+      <node index="57" x="11.8123" y="-11.8123"/>
+      <node index="58" x="14.4671" y="-8.3526"/>
+      <node index="59" x="16.1359" y="-4.3236"/>
+   </nodes>
+   <cells n="49">
+      <cell index="0" boundary="false">
+         <nodelist>
+            <noderef node="0"/>
+            <noderef node="1"/>
+            <noderef node="2"/>
+            <noderef node="3"/>
+            <noderef node="4"/>
+            <noderef node="5"/>
+            <noderef node="6"/>
+            <noderef node="7"/>
+            <noderef node="8"/>
+            <noderef node="9"/>
+            <noderef node="10"/>
+            <noderef node="11"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="1" boundary="false">
+         <nodelist>
+            <noderef node="12"/>
+            <noderef node="13"/>
+            <noderef node="0"/>
+            <noderef node="1"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="2" boundary="false">
+         <nodelist>
+            <noderef node="13"/>
+            <noderef node="14"/>
+            <noderef node="1"/>
+            <noderef node="2"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="3" boundary="false">
+         <nodelist>
+            <noderef node="14"/>
+            <noderef node="15"/>
+            <noderef node="2"/>
+            <noderef node="3"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="4" boundary="false">
+         <nodelist>
+            <noderef node="15"/>
+            <noderef node="16"/>
+            <noderef node="3"/>
+            <noderef node="4"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="5" boundary="false">
+         <nodelist>
+            <noderef node="16"/>
+            <noderef node="17"/>
+            <noderef node="4"/>
+            <noderef node="5"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="6" boundary="false">
+         <nodelist>
+            <noderef node="17"/>
+            <noderef node="18"/>
+            <noderef node="5"/>
+            <noderef node="6"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="7" boundary="false">
+         <nodelist>
+            <noderef node="18"/>
+            <noderef node="19"/>
+            <noderef node="6"/>
+            <noderef node="7"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="8" boundary="false">
+         <nodelist>
+            <noderef node="19"/>
+            <noderef node="20"/>
+            <noderef node="7"/>
+            <noderef node="8"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="9" boundary="false">
+         <nodelist>
+            <noderef node="20"/>
+            <noderef node="21"/>
+            <noderef node="8"/>
+            <noderef node="9"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="10" boundary="false">
+         <nodelist>
+            <noderef node="21"/>
+            <noderef node="22"/>
+            <noderef node="9"/>
+            <noderef node="10"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="11" boundary="false">
+         <nodelist>
+            <noderef node="22"/>
+            <noderef node="23"/>
+            <noderef node="10"/>
+            <noderef node="11"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="12" boundary="false">
+         <nodelist>
+            <noderef node="23"/>
+            <noderef node="12"/>
+            <noderef node="11"/>
+            <noderef node="0"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="13" boundary="false">
+         <nodelist>
+            <noderef node="24"/>
+            <noderef node="25"/>
+            <noderef node="12"/>
+            <noderef node="13"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="14" boundary="false">
+         <nodelist>
+            <noderef node="25"/>
+            <noderef node="26"/>
+            <noderef node="13"/>
+            <noderef node="14"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="15" boundary="false">
+         <nodelist>
+            <noderef node="26"/>
+            <noderef node="27"/>
+            <noderef node="14"/>
+            <noderef node="15"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="16" boundary="false">
+         <nodelist>
+            <noderef node="27"/>
+            <noderef node="28"/>
+            <noderef node="15"/>
+            <noderef node="16"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="17" boundary="false">
+         <nodelist>
+            <noderef node="28"/>
+            <noderef node="29"/>
+            <noderef node="16"/>
+            <noderef node="17"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="18" boundary="false">
+         <nodelist>
+            <noderef node="29"/>
+            <noderef node="30"/>
+            <noderef node="17"/>
+            <noderef node="18"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="19" boundary="false">
+         <nodelist>
+            <noderef node="30"/>
+            <noderef node="31"/>
+            <noderef node="18"/>
+            <noderef node="19"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="20" boundary="false">
+         <nodelist>
+            <noderef node="31"/>
+            <noderef node="32"/>
+            <noderef node="19"/>
+            <noderef node="20"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="21" boundary="false">
+         <nodelist>
+            <noderef node="32"/>
+            <noderef node="33"/>
+            <noderef node="20"/>
+            <noderef node="21"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="22" boundary="false">
+         <nodelist>
+            <noderef node="33"/>
+            <noderef node="34"/>
+            <noderef node="21"/>
+            <noderef node="22"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="23" boundary="false">
+         <nodelist>
+            <noderef node="34"/>
+            <noderef node="35"/>
+            <noderef node="22"/>
+            <noderef node="23"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="24" boundary="false">
+         <nodelist>
+            <noderef node="35"/>
+            <noderef node="24"/>
+            <noderef node="23"/>
+            <noderef node="12"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="25" boundary="true">
+         <nodelist>
+            <noderef node="36"/>
+            <noderef node="37"/>
+            <noderef node="24"/>
+            <noderef node="25"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="26" boundary="true">
+         <nodelist>
+            <noderef node="37"/>
+            <noderef node="38"/>
+            <noderef node="24"/>
+            <noderef node="25"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="27" boundary="true">
+         <nodelist>
+            <noderef node="38"/>
+            <noderef node="39"/>
+            <noderef node="25"/>
+            <noderef node="26"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="28" boundary="true">
+         <nodelist>
+            <noderef node="39"/>
+            <noderef node="40"/>
+            <noderef node="25"/>
+            <noderef node="26"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="29" boundary="true">
+         <nodelist>
+            <noderef node="40"/>
+            <noderef node="41"/>
+            <noderef node="26"/>
+            <noderef node="27"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="30" boundary="true">
+         <nodelist>
+            <noderef node="41"/>
+            <noderef node="42"/>
+            <noderef node="26"/>
+            <noderef node="27"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="31" boundary="true">
+         <nodelist>
+            <noderef node="42"/>
+            <noderef node="43"/>
+            <noderef node="27"/>
+            <noderef node="28"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="32" boundary="true">
+         <nodelist>
+            <noderef node="43"/>
+            <noderef node="44"/>
+            <noderef node="27"/>
+            <noderef node="28"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="33" boundary="true">
+         <nodelist>
+            <noderef node="44"/>
+            <noderef node="45"/>
+            <noderef node="28"/>
+            <noderef node="29"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="34" boundary="true">
+         <nodelist>
+            <noderef node="45"/>
+            <noderef node="46"/>
+            <noderef node="28"/>
+            <noderef node="29"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="35" boundary="true">
+         <nodelist>
+            <noderef node="46"/>
+            <noderef node="47"/>
+            <noderef node="29"/>
+            <noderef node="30"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="36" boundary="true">
+         <nodelist>
+            <noderef node="47"/>
+            <noderef node="48"/>
+            <noderef node="29"/>
+            <noderef node="30"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="37" boundary="true">
+         <nodelist>
+            <noderef node="48"/>
+            <noderef node="49"/>
+            <noderef node="30"/>
+            <noderef node="31"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="38" boundary="true">
+         <nodelist>
+            <noderef node="49"/>
+            <noderef node="50"/>
+            <noderef node="30"/>
+            <noderef node="31"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="39" boundary="true">
+         <nodelist>
+            <noderef node="50"/>
+            <noderef node="51"/>
+            <noderef node="31"/>
+            <noderef node="32"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="40" boundary="true">
+         <nodelist>
+            <noderef node="51"/>
+            <noderef node="52"/>
+            <noderef node="31"/>
+            <noderef node="32"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="41" boundary="true">
+         <nodelist>
+            <noderef node="52"/>
+            <noderef node="53"/>
+            <noderef node="32"/>
+            <noderef node="33"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="42" boundary="true">
+         <nodelist>
+            <noderef node="53"/>
+            <noderef node="54"/>
+            <noderef node="32"/>
+            <noderef node="33"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="43" boundary="true">
+         <nodelist>
+            <noderef node="54"/>
+            <noderef node="55"/>
+            <noderef node="33"/>
+            <noderef node="34"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="44" boundary="true">
+         <nodelist>
+            <noderef node="55"/>
+            <noderef node="56"/>
+            <noderef node="33"/>
+            <noderef node="34"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="45" boundary="true">
+         <nodelist>
+            <noderef node="56"/>
+            <noderef node="57"/>
+            <noderef node="34"/>
+            <noderef node="35"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="46" boundary="true">
+         <nodelist>
+            <noderef node="57"/>
+            <noderef node="58"/>
+            <noderef node="34"/>
+            <noderef node="35"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="47" boundary="true">
+         <nodelist>
+            <noderef node="58"/>
+            <noderef node="59"/>
+            <noderef node="35"/>
+            <noderef node="24"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+      <cell index="48" boundary="true">
+         <nodelist>
+            <noderef node="59"/>
+            <noderef node="36"/>
+            <noderef node="35"/>
+            <noderef node="24"/>
+         </nodelist>
+         <chemicals/>
+      </cell>
+   </cells>
+   <walls n="60">
+      <wall index="0" c1="0" c2="1" n1="0" n2="1" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="1" c1="0" c2="2" n1="1" n2="2" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="2" c1="0" c2="3" n1="2" n2="3" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="3" c1="0" c2="4" n1="3" n2="4" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="4" c1="0" c2="5" n1="4" n2="5" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="5" c1="0" c2="6" n1="5" n2="6" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="6" c1="0" c2="7" n1="6" n2="7" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="7" c1="0" c2="8" n1="7" n2="8" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="8" c1="0" c2="9" n1="8" n2="9" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="9" c1="0" c2="10" n1="9" n2="10" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="10" c1="0" c2="11" n1="10" n2="11" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="11" c1="0" c2="12" n1="11" n2="0" wall_type="normal" viz_flux="0" length="5.1764">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="12" c1="1" c2="13" n1="12" n2="13" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="13" c1="2" c2="14" n1="13" n2="14" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="14" c1="3" c2="15" n1="14" n2="15" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="15" c1="4" c2="16" n1="15" n2="16" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="16" c1="5" c2="17" n1="16" n2="17" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="17" c1="6" c2="18" n1="17" n2="18" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="18" c1="7" c2="19" n1="18" n2="19" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="19" c1="8" c2="20" n1="19" n2="20" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="20" c1="9" c2="21" n1="20" n2="21" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="21" c1="10" c2="22" n1="21" n2="22" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="22" c1="11" c2="23" n1="22" n2="23" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="23" c1="12" c2="24" n1="23" n2="12" wall_type="normal" viz_flux="0" length="5.9560">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="24" c1="25" c2="48" n1="24" n2="36" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="25" c1="26" c2="27" n1="25" n2="38" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="26" c1="28" c2="29" n1="26" n2="40" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="27" c1="30" c2="31" n1="27" n2="42" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="28" c1="32" c2="33" n1="28" n2="44" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="29" c1="34" c2="35" n1="29" n2="46" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="30" c1="36" c2="37" n1="30" n2="48" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="31" c1="38" c2="39" n1="31" n2="50" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="32" c1="40" c2="41" n1="32" n2="52" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="33" c1="42" c2="43" n1="33" n2="54" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="34" c1="44" c2="45" n1="34" n2="56" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="35" c1="46" c2="47" n1="35" n2="58" wall_type="normal" viz_flux="0" length="3.4660">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="36" c1="25" c2="-1" n1="36" n2="37" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="37" c1="26" c2="-1" n1="37" n2="38" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="38" c1="27" c2="-1" n1="38" n2="39" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="39" c1="28" c2="-1" n1="39" n2="40" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="40" c1="29" c2="-1" n1="40" n2="41" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="41" c1="30" c2="-1" n1="41" n2="42" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="42" c1="31" c2="-1" n1="42" n2="43" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="43" c1="32" c2="-1" n1="43" n2="44" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="44" c1="33" c2="-1" n1="44" n2="45" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="45" c1="34" c2="-1" n1="45" n2="46" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="46" c1="35" c2="-1" n1="46" n2="47" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="47" c1="36" c2="-1" n1="47" n2="48" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="48" c1="37" c2="-1" n1="48" n2="49" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="49" c1="38" c2="-1" n1="49" n2="50" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="50" c1="39" c2="-1" n1="50" n2="51" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="51" c1="40" c2="-1" n1="51" n2="52" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="52" c1="41" c2="-1" n1="52" n2="53" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="53" c1="42" c2="-1" n1="53" n2="54" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="54" c1="43" c2="-1" n1="54" n2="55" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="55" c1="44" c2="-1" n1="55" n2="56" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="56" c1="45" c2="-1" n1="56" n2="57" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="57" c1="46" c2="-1" n1="57" n2="58" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="58" c1="47" c2="-1" n1="58" n2="59" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+      <wall index="59" c1="48" c2="-1" n1="59" n2="36" wall_type="normal" viz_flux="0" length="4.3609">
+         <transporters1/>
+         <transporters2/>
+      </wall>
+   </walls>
+   <nodesets n="0"/>
+   <settings>
+      
+      
+      <setting val="true" name="show_cell_centers"/>
+      
+      
+      <setting val="true" name="show_nodes"/>
+      
+      
+      <setting val="false" name="show_node_numbers"/>
+      
+      
+      <setting val="true" name="show_cell_numbers"/>
+      
+      
+      <setting val="false" name="show_borders_cells"/>
+      
+      
+      <setting val="false" name="show_cell_axes"/>
+      
+      
+      <setting val="false" name="show_cell_strain"/>
+      
+      
+      <setting val="false" name="show_fluxes"/>
+      
+      
+      <setting val="false" name="show_walls"/>
+      
+      
+      <setting val="true" name="save_movie_frames"/>
+      
+      
+      <setting val="false" name="show_only_leaf_boundary"/>
+      
+      
+      <setting val="true" name="cell_growth"/>
+      
+      
+      <setting val="false" name="hide_cells"/>
+      
+      
+      <viewport m11="2.5" m12="0" m21="0" m22="2.5" dx="0" dy="0"/>
+      
+   
+   </settings>
+   
+
+</leaf>

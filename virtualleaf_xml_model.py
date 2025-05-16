@@ -88,11 +88,18 @@ class ParameterSection:
     """
     Wrapper around the ``<parameter>`` XML block.
 
-    Implements container-like behaviour so that you can::
+    Implements container-like behaviour so that you can:
 
-        >>> len(doc.parameter)           # number of parameters
-        >>> for p in doc.parameter: ...  # iterate over Parameter objects
-        >>> doc.parameter.names()        # list the parameter names
+    * Get number of parameters with ``len()``
+    * Iterate over Parameter objects with a for loop
+    * List all parameter names with ``names()`` method
+
+    Examples:
+        # Assuming 'model' is a VirtualLeaf_XML instance:
+        model.parameter.names()        # liste les noms de paramètres
+        len(model.parameter)           # nombre de paramètres
+        for p in model.parameter:      # itère sur les objets Parameter
+            print(p.name, p.value)
     """
     elem: objectify.ObjectifiedElement = field(repr=False)
     parameters: List[Parameter] = field(init=False)

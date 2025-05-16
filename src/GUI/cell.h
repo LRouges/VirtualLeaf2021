@@ -98,7 +98,7 @@ class Cell : public CellBase
 
     Vector long_axis; 
     Length(&long_axis); 
-    DivideOverAxis(long_axis.Perp2D()); 
+    DivideOverAxis(long_axis.Perp2D());
   }
 
   //void CheckForGFDrivenDivision(void);

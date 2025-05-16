@@ -22,7 +22,9 @@
 #include <QObject>
 #include <QtGui>
 #include <set>
+
 #include "parameter.h"
+#include "pi.h"
 
 #include "wallbase.h"
 #include "cellbase.h"
@@ -254,7 +256,9 @@ void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
     // Normal behavior for cambium cells
     c->EnlargeTargetArea(par->cell_expansion_rate);
     if (c->Area() > par->rel_cell_div_threshold * c->BaseArea()) {
-      c->Divide();
+      double orientation = Pi*RANDOM();
+      Vector axis(sin(orientation),cos(orientation),0.);
+      c->DivideOverAxis(axis);
     }
   }
   else if(c->CellType() == 2) { // If cell is a type 2, grow until it reach 3*BaseArea then transform into a Type 3

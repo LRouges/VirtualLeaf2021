@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic">
+      <change beforePath="$PROJECT_DIR$/Change_XML.py" beforeDir="false" afterPath="$PROJECT_DIR$/Change_XML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/leaves/cambium.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/cell.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/cell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualleaf_xml_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/virtualleaf_xml_model.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;regiroc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://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0@github.com/regiroc/VirtualLeaf2021.git&quot;,
+    &quot;accountId&quot;: &quot;8105f130-6909-4c7e-9180-03453d9f651f&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2vUM6Ei8jz85MKn7isRQ1VFiCND" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Doctests in virtualleaf_xml_model.executor": "Run",
+    "Python.Change stifness parameter XML.executor": "Run",
+    "Python.Change_XML.executor": "Run",
+    "Python.Creating  XML cambium.executor": "Run",
+    "Python.Creating Cambium XML.executor": "Run",
+    "Python.Creating cambium.executor": "Run",
+    "Python.GetBoudaryNodes.executor": "Run",
+    "Python.Ncouches cambium.executor": "Run",
+    "Python.__main__.executor": "Run",
+    "Python.change bark node.executor": "Run",
+    "Python.empty_XML_VirtualLeaf.executor": "Run",
+    "Python.readsvg.executor": "Run",
+    "Python.virtualleaf_xml_model.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/Rojas/PycharmProjects/VirtualLeaf2021/bin",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\bin" />
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\data\leaves" />
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\src\GUI" />
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\poubelle" />
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\src\Models\Cambium" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\src\python_cambium" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="GetBoudaryNodes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/python_cambium" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/python_cambium/GetBoudaryNodes.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_edited/svg_to_vl" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_edited/svg_to_vl/__main__.py" />
+      <option name="PARAMETERS" value="-i example/root_example -t example/template.xml -s 2" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="change bark node" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/python_cambium" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/python_cambium/change bark node.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="readsvg" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_edited/svg_to_vl" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_edited/svg_to_vl/readsvg.py" />
+      <option name="PARAMETERS" value="-i root_example -t template.xml -s 2" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.change bark node" />
+        <item itemvalue="Python.GetBoudaryNodes" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
+        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="" />
+      <created>1744195022159</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744195022159</updated>
+      <workItem from="1744195023355" duration="450000" />
+      <workItem from="1744195483496" duration="14061000" />
+      <workItem from="1744274786051" duration="1704000" />
+      <workItem from="1744276506274" duration="357000" />
+      <workItem from="1744276874100" duration="368000" />
+      <workItem from="1744277251823" duration="1637000" />
+      <workItem from="1744284609731" duration="2994000" />
+      <workItem from="1744368989961" duration="6935000" />
+      <workItem from="1744617535596" duration="3626000" />
+      <workItem from="1744621501059" duration="7629000" />
+      <workItem from="1744800959392" duration="1350000" />
+      <workItem from="1744985164573" duration="4925000" />
+      <workItem from="1745323063149" duration="13369000" />
+      <workItem from="1745401028324" duration="2029000" />
+      <workItem from="1745408895101" duration="565000" />
+      <workItem from="1745409476248" duration="1315000" />
+      <workItem from="1745415708735" duration="135000" />
+      <workItem from="1745415849602" duration="15167000" />
+      <workItem from="1745490189756" duration="13497000" />
+      <workItem from="1745503789298" duration="8147000" />
+      <workItem from="1745566245550" duration="5428000" />
+      <workItem from="1745586002504" duration="2664000" />
+      <workItem from="1745837024565" duration="25181000" />
+      <workItem from="1745924397995" duration="71000" />
+      <workItem from="1745924528683" duration="24580000" />
+      <workItem from="1746012507796" duration="6158000" />
+      <workItem from="1746021887243" duration="49000" />
+      <workItem from="1746434695421" duration="1570000" />
+      <workItem from="1746446492368" duration="139000" />
+      <workItem from="1746446740187" duration="1653000" />
+      <workItem from="1746456873272" duration="15000" />
+      <workItem from="1746458747919" duration="3569000" />
+      <workItem from="1746528811199" duration="12152000" />
+      <workItem from="1747042066414" duration="609000" />
+      <workItem from="1747135750119" duration="1160000" />
+      <workItem from="1747136990650" duration="3305000" />
+      <workItem from="1747140357976" duration="18411000" />
+      <workItem from="1747219025297" duration="9891000" />
+      <workItem from="1747241205783" duration="787000" />
+      <workItem from="1747306746542" duration="8032000" />
+      <workItem from="1747392946016" duration="20995000" />
+    </task>
+    <task id="LOCAL-00001" summary="Update copilot instructions: enhance context awareness and clarify core library structure">
+      <option name="closed" value="true" />
+      <created>1745416053129</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745416053129</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic">
+      <option name="closed" value="true" />
+      <created>1745862945512</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745862945512</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update copilot instructions: enhance context awareness and clarify core library structure" />
+    <MESSAGE value="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_XML.coverage" NAME="Change_XML Coverage Results" MODIFIED="1747325655943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$virtualleaf_xml_model.coverage" NAME="virtualleaf_xml_model Coverage Results" MODIFIED="1747325369562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$GetBoudaryNodes.coverage" NAME="GetBoudaryNodes Coverage Results" MODIFIED="1745925255944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1747393453399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_edited/svg_to_vl" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Creating_cambium.coverage" NAME="Creating cambium Coverage Results" MODIFIED="1747326548591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_stifness_parameter_XML.coverage" NAME="Change stifness parameter XML Coverage Results" MODIFIED="1745507618573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$empty_XML_VirtualLeaf.coverage" NAME="empty_XML_VirtualLeaf Coverage Results" MODIFIED="1747395523791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Creating_Cambium_XML.coverage" NAME="Creating Cambium XML Coverage Results" MODIFIED="1747412502536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Ncouches_cambium.coverage" NAME="Ncouches cambium Coverage Results" MODIFIED="1747414966870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$change_bark_node.coverage" NAME="change bark node Coverage Results" MODIFIED="1745948703319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Doctests_in_virtualleaf_xml_model.coverage" NAME="Doctests in virtualleaf_xml_model Coverage Results" MODIFIED="1747324998525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$readsvg.coverage" NAME="readsvg Coverage Results" MODIFIED="1744988759873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_edited/svg_to_vl" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Creating__XML_cambium.coverage" NAME="Creating  XML cambium Coverage Results" MODIFIED="1747309728074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
