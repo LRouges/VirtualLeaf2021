@@ -1935,6 +1935,10 @@ if (!strcmp(namec, "elastic_limit")) {
 	elastic_limit = standardlocale.toDouble(valc, &ok);
   if (!ok) { MyWarning::error("Read error: cannot convert string \"%s\" to double while reading parameter 'elastic_limit' from XML file.",valc); }
 }
+if (!strcmp(namec, "elastic_modulus")) {
+  elastic_modulus = standardlocale.toDouble(valc, &ok);
+  if (!ok) { MyWarning::error("Read error: cannot convert string \"%s\" to double while reading parameter 'elastic_modulus' from XML file.",valc); }
+}
 if (!strcmp(namec, "movie")) {
 movie = strtobool(valc);
 }

@@ -701,4 +701,9 @@ void CellBase::correctNeighbors() {}
 double CellBase::elastic_limit() {
 	return std::nan("1");
 }
+
+double CellBase::SetInitialArea(void) {
+    InitialArea = this->CalcArea();
+    return InitialArea;
+}
 /* finis*/
