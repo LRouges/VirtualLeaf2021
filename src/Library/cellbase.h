@@ -101,6 +101,7 @@ class CellBase :  public QObject, public Vector
  public:
   CellBase(QObject *parent=0);
   CellBase(double x,double y,double z=0); // constructor
+  double InitialArea = 0.0;  // Initialize to zero
 
   virtual ~CellBase() {
     delete[] chem;
@@ -112,6 +113,7 @@ class CellBase :  public QObject, public Vector
   CellBase(const CellBase &src); // copy constructor
   virtual bool BoundaryPolP(void) const { return false; } 
 
+  const list<Node *>& getNodes() const { return nodes; } // Ajout Rouges 2025
 
   CellBase operator=(const CellBase &src); // assignment operator
   CellBase operator=(const Vector &src);
@@ -199,6 +201,8 @@ class CellBase :  public QObject, public Vector
   inline int Index(void) const { return index; }
 
 
+  double SetInitialArea(void);  // Calculate and store the initial area
+  double GetInitialArea(void) const { return InitialArea; }  // Getter method
   void SetTargetArea(double tar_ar) { target_area=tar_ar; }
 
   inline void SetTargetLength(double tar_l) { target_length=tar_l; }
@@ -584,7 +588,9 @@ inline Vector PINdir(CellBase *here, CellBase *nb, Wall *w)
 {
   return w->getTransporter( here, 1)  *  w->getInfluxVector(here);
 }
-
 #endif
+
+
+
 
 /* finis*/
