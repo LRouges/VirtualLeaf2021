@@ -53,6 +53,12 @@ void Tutorial1A::SetCellColor(CellBase *c, QColor *color) {
 
 void Tutorial1A::CellHouseKeeping(CellBase *c) {
   // add cell behavioral rules here
+  cout << "Cell base Area: " << c->BaseArea() << endl;
+  cout << "Cell current Area: " << c->Area() << endl;
+  cout << "Cell Target Area: " << c->TargetArea() << endl;
+  c->SetLambdaLength(100);
+
+
 	c->EnlargeTargetArea(par->cell_expansion_rate);
 }
 

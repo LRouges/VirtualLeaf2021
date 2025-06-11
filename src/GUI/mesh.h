@@ -86,7 +86,7 @@ class Mesh {
   friend class Node;
   friend class FigureEditor;
 
- public: 
+public:
   Mesh(void) {
     // Make sure the reserved value is large enough if a cell is added
     // in "Divide" when the capacity is insufficient, "cells" might be
@@ -333,7 +333,6 @@ class Mesh {
     }
     return sum/(double)NCells();
   }
-
   void SetBaseArea(void);
   int NCells(void) const {
     return cells.size();
@@ -465,6 +464,8 @@ class Mesh {
   BoundaryPolygon *boundary_polygon;
   double time;
   SimPluginInterface *plugin;
+
+  static int cell_to_debug;
 
   // Private member functions
   double CellSpecificStiffnessOneSide(Node *nb,set<int> &nodeown);

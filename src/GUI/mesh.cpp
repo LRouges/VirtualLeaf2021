@@ -50,6 +50,7 @@
 #include <QTextStream>
 
 static const std::string _module_id("$Id$");
+int Mesh::cell_to_debug = 1000;
 
 extern Parameter par;
 
@@ -654,6 +655,7 @@ double getStiffness(CellBase* c,NodeBase* n1) {
 }
 
 void Mesh::RemodelWallElement(vector<CellWallCurve> & curves,CellBase* c,Node* w0,Node* w1,Node* w2,Node* w3,Node* w4) {
+//    qDebug() << "DisplaceNodes - elastic_modulus: " << elastic_modulus;
 
 	Node * o0;
 	Node * o1;
@@ -1102,7 +1104,12 @@ double Mesh::DisplaceNodes(void) {
     double cell_w = c.GetWallStiffness();
     w1 = w1*cell_w;
     w2 = w2*cell_w;
-
+    // Debug output for cell #28
+    if (c.Index() == cell_to_debug) {
+        qDebug() << "Cell: "<< cell_to_debug <<" - Wall Stiffness Debug:";
+        qDebug() << "  Base stiffness:" << cell_w;
+        qDebug() << "  w1:" << w1 << "  w2:" << w2;
+    }
 
     double w_w1 = 1;
     double w_w2 = 1;
@@ -1110,26 +1117,50 @@ double Mesh::DisplaceNodes(void) {
     double bl_plus_1 = 0.0;
 
     if (activateWallStiffnessHamiltonian()) {
-    	calculateWallStiffness(&c, *i, &w_w1, &w_w2, &bl_minus_1, &bl_plus_1);
-    }
-    if (bl_minus_1>0 && bl_plus_1>0) {
-        w1 = cell_w * (w_w1);
-        w2 = cell_w * (w_w2);
-        //check if wall elements are defined and pick the appropriate length_dh
+    calculateWallStiffness(&c, *i, &w_w1, &w_w2, &bl_minus_1, &bl_plus_1);
+}
+if (bl_minus_1>0 && bl_plus_1>0) {
+    w1 = cell_w * (w_w1);
+    w2 = cell_w * (w_w2);
+    //check if wall elements are defined and pick the appropriate length_dh
 
-            length_dh +=
-        		elastic_modulus * w1 *
-        		bl_minus_1 *(DSQR(new_l1/bl_minus_1 - 1)-DSQR(old_l1/bl_minus_1 - 1)) +
-                elastic_modulus * w2 *
-				bl_plus_1 *(DSQR(new_l2/bl_plus_1 - 1)-DSQR(old_l2/bl_plus_1 - 1));
+    double old_length_dh = length_dh;
+    double term1 = elastic_modulus * w1 * bl_minus_1 * (DSQR(new_l1/bl_minus_1 - 1) - DSQR(old_l1/bl_minus_1 - 1));
+    double term2 = elastic_modulus * w2 * bl_plus_1 * (DSQR(new_l2/bl_plus_1 - 1) - DSQR(old_l2/bl_plus_1 - 1));
+    length_dh += term1 + term2;
+
+    if (c.Index() == cell_to_debug) {
+        std::cout << "Debug [Cell " << c.index
+                  << "]: Wall elastic terms - term1: " << term1 << ", term2: " << term2
+                  << ", length_dh delta: " << (length_dh - old_length_dh)
+                  << "\n  w1: " << w1 << ", w2: " << w2
+                  << "\n elastic modulus: " << elastic_modulus
+                  << "\n  bl_minus_1: " << bl_minus_1 << ", bl_plus_1: " << bl_plus_1
+                  << "\n  new_l1: " << new_l1 << ", old_l1: " << old_l1
+                  << "\n  new_l2: " << new_l2 << ", old_l2: " << old_l2
+                  << "\n length_dh: " << length_dh
+                  << std::endl;
     }
-    else {
-    	length_dh +=2*Node::target_length * (
-    			w1*(old_l1 - new_l1) +
-    			w2*(old_l2 - new_l2) ) +
-        		w1*(DSQR(new_l1) - DSQR(old_l1)) +
-				w2*(DSQR(new_l2) - DSQR(old_l2));
-	}
+}
+else {
+    double old_length_dh = length_dh;
+    double term1 = 2 * Node::target_length * (w1 * (old_l1 - new_l1) + w2 * (old_l2 - new_l2));
+    double term2 = w1 * (DSQR(new_l1) - DSQR(old_l1)) + w2 * (DSQR(new_l2) - DSQR(old_l2));
+    length_dh += term1 + term2;
+
+    if (c.Index() == cell_to_debug) {
+        std::cout << "Debug [Cell " << c.index
+                  << "]: Default elastic terms - term1: " << term1 << ", term2: " << term2
+                  << ", length_dh delta: " << (length_dh - old_length_dh)
+                  << "\n  w1: " << w1 << ", w2: " << w2
+                  << "\n elastic modulus: " << elastic_modulus
+                  << "\n  target_length: " << Node::target_length
+                  << "\n  new_l1: " << new_l1 << ", old_l1: " << old_l1
+                  << "\n  new_l2: " << new_l2 << ", old_l2: " << old_l2
+                  << "\n length_dh: " << length_dh
+                  << std::endl;
+    }
+}
 //    cout << node << "\t" << bl_minus_1 <<  "\t" << bl_plus_1 <<  "\t" << w_w1 <<  "\t" << w_w2 << "\n";
 	}
 
@@ -1198,36 +1229,85 @@ void Mesh::WallRelaxation(void) {
 	}
 }
 
-void extractWallData(WallElementInfo* wallElementInfo,double *w,double* bl){
+void extractWallData(WallElementInfo* wallElementInfo, double *w, double *bl){
 	double stiffness=.0;
 	double base_length=.0;
+	int cell_to_debug = 1000; // Set the cell index to debug
+
+	bool debugCell = (wallElementInfo->getCell()->Index() == cell_to_debug);
+
+	if (debugCell) {
+		qDebug() << "extractWallData called with wallElementInfo:" << wallElementInfo;
+	}
+
 	if (wallElementInfo->hasWallElement()) {
 		stiffness = wallElementInfo->getWallElement()->getStiffness();
 		base_length = wallElementInfo->getBaseLength();
+		if (debugCell) {
+			qDebug() << "  Has WallElement - Stiffness:" << stiffness << "Base Length:" << base_length;
+		}
 	} else {
 		stiffness = wallElementInfo->getCell()->GetWallStiffness();
+		if (debugCell) {
+			qDebug() << "  No WallElement - Using cell wall stiffness:" << stiffness;
+		}
 	}
+
+	double old_w = *w;
+	double old_bl = *bl;
 	if (!std::isnan(stiffness)){
 		(*w) += stiffness;
 		(*bl) += base_length;
+		if (debugCell) {
+			qDebug() << "  Updated values - w:" << old_w << "->" << *w << "bl:" << old_bl << "->" << *bl;
+		}
+	} else if (debugCell) {
+		qDebug() << "  Skipped update due to NaN stiffness";
 	}
 }
-
 void Mesh::calculateWallStiffness(CellBase* c, Node* node, double *w_p1,double *w_p2, double* bl_minus_1, double* bl_plus_1) {
-	c->LoopWallElements([node,w_p1,w_p2,bl_minus_1,bl_plus_1](auto wallElementInfo){
-		int points = 0;
-		if (wallElementInfo->isTo(node)) {
+    bool debugCell = (c->Index() == cell_to_debug);
+
+    if (debugCell) {
+        qDebug() << "calculateWallStiffness called for Cell 1 and Node" << node->Index();
+        qDebug() << "  Initial values - w_p1:" << *w_p1 << "w_p2:" << *w_p2
+                 << "bl_minus_1:" << *bl_minus_1 << "bl_plus_1:" << *bl_plus_1;
+    }
+
+    c->LoopWallElements([node,w_p1,w_p2,bl_minus_1,bl_plus_1,debugCell](auto wallElementInfo){
+        int points = 0;
+        if (wallElementInfo->isTo(node)) {
+            if (debugCell) {
+                qDebug() << "  Found wall element TO node" << node->Index() << "- Before extraction w_p1:" << *w_p1 << "bl_minus_1:" << *bl_minus_1;
+            }
             extractWallData(wallElementInfo,w_p1,bl_minus_1);
+            if (debugCell) {
+                qDebug() << "  After extraction w_p1:" << *w_p1 << "bl_minus_1:" << *bl_minus_1;
+            }
             points++;
-		} else	if (wallElementInfo->isFrom(node)) {
+        } else if (wallElementInfo->isFrom(node)) {
+            if (debugCell) {
+                qDebug() << "  Found wall element FROM node" << node->Index() << "- Before extraction w_p2:" << *w_p2 << "bl_plus_1:" << *bl_plus_1;
+            }
             extractWallData(wallElementInfo,w_p2,bl_plus_1);
+            if (debugCell) {
+                qDebug() << "  After extraction w_p2:" << *w_p2 << "bl_plus_1:" << *bl_plus_1;
+            }
             points++;
         }
-		if (points == 2) {
+        if (points == 2) {
+            if (debugCell) {
+                qDebug() << "  Found both connections, stopping loop";
+            }
             //stop the loop, as we do not need to go further.
-        	wallElementInfo->stopLoop();
-		}
-	});
+            wallElementInfo->stopLoop();
+        }
+    });
+
+    if (debugCell) {
+        qDebug() << "  Final values - w_p1:" << *w_p1 << "w_p2:" << *w_p2
+                 << "bl_minus_1:" << *bl_minus_1 << "bl_plus_1:" << *bl_plus_1;
+    }
 }
 
 

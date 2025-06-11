@@ -44,6 +44,18 @@
 
 //#include "wallelementinfo.h"
 
+
+// Division type enumeration
+enum DivisionType {
+    NO_DIVISION,
+    RANDOM_DIVISION,
+    MAX_STRESS_AXIS,
+    SHORT_AXIS,
+    LONG_AXIS,
+    PERP_STRESS
+};
+
+
 extern Parameter par;
 using namespace std;
 
@@ -248,6 +260,9 @@ class CellBase :  public QObject, public Vector
   virtual void InsertWall( WallBase *w );
   virtual CellBase* getOtherWallElementSide(NodeBase * spikeEnd,NodeBase * over);
   virtual double elastic_limit();
+  void SetDivisionType(DivisionType type) { division_type = type; }
+  DivisionType GetDivisionType() const { return division_type; }
+  DivisionType division_type;
 
   QList<WallBase *> getWalls(void) {
     QList<WallBase *> wall_list;

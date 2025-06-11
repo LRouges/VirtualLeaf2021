@@ -21,6 +21,8 @@
 
 CONFIG += release
 CONFIG += debug
+QMAKE_CXXFLAGS_DEBUG += -g -O0
+QMAKE_LFLAGS += -rdynamic
 CONFIG += qt
 #CONFIG -= app_bundle
 CONFIG+=sdk_no_version_check

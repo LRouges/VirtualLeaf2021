@@ -185,7 +185,7 @@ void MainBase::Plot(int resize_stride)
       PNGname.width(6);
       PNGname << count << ".png";
       // Write high-res PNG snapshot every plot step
-      Save(PNGname.str().c_str(), "PNG", 1024, 768);
+      Save(PNGname.str().c_str(), "PNG", 3072, 3072); //768
     //}
     }
 

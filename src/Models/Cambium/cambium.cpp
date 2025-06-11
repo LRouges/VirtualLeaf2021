@@ -271,20 +271,21 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
 //  }
 //}
 
-void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
+
+// void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
+//     if (c->Index()==1) {
+//         c->EnlargeTargetArea(par->cell_expansion_rate);
+//     }
+// }
+void cambium::CellHouseKeeping(CellBase *c) {
+    c->SetDivisionType(MAX_STRESS_AXIS);
   // Set initial area on first call to this function for each cell
   static std::set<int> initialized_cells;
   if (initialized_cells.find(c->Index()) == initialized_cells.end()) {
     c->SetInitialArea();
     initialized_cells.insert(c->Index());
   }
-
-  qDebug() << "Cell type: " << c->CellType() << ", Area: " << c->Area() << ", BaseArea: " << c->BaseArea() << "InitialArea" <<c->GetInitialArea();
-  // Print wall stiffness for debugging
-//  if (c->Index() == 28) {  // Only print for a specific cell if desired
-//    PrintWallStiffness(c);
-//  }
-//  SetCellTypeProperties(c);
+  // SetCellTypeProperties(c);
 
   // Check if a cambium cell is no longer adjacent to the bark, if not it has to be transformed into a Growing Xylem cell
   if (c->CellType() == 1) {
@@ -327,55 +328,7 @@ void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
   /* If the cell is a bark cell (type 0), we need to slightly enlarge it to prevent excessive stretching,
      which could cause issues in the simulation. This adjustment ensures stability during runtime. */
     c->EnlargeTargetArea(0.5 * par->cell_expansion_rate);
-//  // Get current area values
-//  double area = c->Area();
-//  double baseArea = c->BaseArea();
-//
-//  // Use static maps to store growth data for each cell by its index
-//  static std::map<int, double> growth_additions;
-//  static std::map<int, int> last_growth_step;
-//  static int current_step = 0;
-//
-//  // Increment step counter each time function is called (simulation step)
-//  current_step++;
-//
-//  // Initialize growth addition for this cell if not present
-//  if (growth_additions.find(c->Index()) == growth_additions.end()) {
-//    growth_additions[c->Index()] = 0.0;
-//    last_growth_step[c->Index()] = 0;
-//  }
-//
-//  // Check if we need to increase the growth_addition (every 500 simulation steps)
-//  if (current_step - last_growth_step[c->Index()] >= 200) {
-//
-//    // Increase growth_addition by 25% of baseArea
-//    growth_additions[c->Index()] += baseArea * 0.25;
-//    // Update last growth step
-//    last_growth_step[c->Index()] = current_step;
-//
-//    if (c->Index() == 28) {
-//      qDebug() << "Cell 28 - GROWTH UPDATE - Step:" << current_step
-//               << "New Growth Addition:" << growth_additions[c->Index()];
-//    }
-//  }
-//
-//  // Use effective base area (original baseArea + growth_addition)
-//  double effective_base_area = baseArea + growth_additions[c->Index()];
-//
-//  // Maintain effective base area if cell has shrunk
-//  if (area < effective_base_area) {
-//    // Gradually increase target area to reach effective base area
-//    c->EnlargeTargetArea(par->cell_expansion_rate);
-//
-//    if (c->Index() == 28) {
-//      qDebug() << "Cell 28 - ENLARGING TARGET AREA - Step:" << current_step
-//               << "Effective base area:" << effective_base_area
-//               << "Current area:" << area
-//               << "Target area:" << c->TargetArea()
-//               << "Rate:" << par->cell_expansion_rate;
-//    }
-//  }
-}
+ }
 }
 
 
