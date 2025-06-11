@@ -144,8 +144,7 @@ class Cell : public CellBase
         std::cout << "Cell " << index << ": Division type = PERP_STRESS" << std::endl;
         // Divide perpendicular to principal stress
         {
-          Vector stress_axis = CalculateDivisionPlane();
-          Vector perpStressAxis = stress_axis.Perp2D();
+          Vector perpStressAxis =  CalculateDivisionPlane();
           std::cout << "Cell " << index << ": Perpendicular stress axis = (" << perpStressAxis.x << ", " << perpStressAxis.y << ", " << perpStressAxis.z << ")" << std::endl;
           DivideOverAxis(perpStressAxis);
         }

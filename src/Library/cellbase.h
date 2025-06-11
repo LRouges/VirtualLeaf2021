@@ -263,6 +263,7 @@ class CellBase :  public QObject, public Vector
   void SetDivisionType(DivisionType type) { division_type = type; }
   DivisionType GetDivisionType() const { return division_type; }
   DivisionType division_type;
+  virtual Vector CalculatePrincipalStressAxis();
 
   QList<WallBase *> getWalls(void) {
     QList<WallBase *> wall_list;

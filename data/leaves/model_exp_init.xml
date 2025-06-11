@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<leaf name="/ufs/merks/VLeaf1.0/V1.0/data/leaves/tutorial1_init.xml" date="Thu Nov 25 14:26:38 2010" simtime="0">
+<leaf name="/data/leaves/model_exp.xml" date="Thu Nov 25 14:26:38 2010" simtime="0">
   <parameter>
     <par name="arrowcolor" val="white"/>
     <par name="arrowsize" val="10"/>
@@ -7,27 +7,27 @@
     <par name="cellnumsize" val="1"/>
     <par name="nodenumsize" val="1"/>
     <par name="node_mag" val="1"/>
-    <par name="outlinewidth" val="0.01"/>
+    <par name="outlinewidth" val="1"/>
     <par name="cell_outline_color" val="forestgreen"/>
     <par name="resize_stride" val="10"/>
     <par name="export_interval" val="0"/>
     <par name="export_fn_prefix" val="cell."/>
     <par name="storage_stride" val="100"/>
-    <par name="xml_storage_stride" val="50"/>
-    <par name="compatibility_level" val="0"/>
-    <par name="datadir" val="/home/ardati/Data_VirtualLeaf/debug_stiffness"/>
+    <par name="xml_storage_stride" val="1"/>
+    <par name="datadir" val="model_exp_data"/>
     <par name="T" val="1"/>
+    <par name="elastic_modulus" val="1000" />
     <par name="lambda_length" val="100"/>
     <par name="yielding_threshold" val="4"/>
     <par name="lambda_celllength" val="0"/>
-    <par name="target_length" val="60"/>
+    <par name="target_length" val="61.8034"/>
     <par name="cell_expansion_rate" val="5"/>
     <par name="cell_div_expansion_rate" val="10"/>
     <par name="auxin_dependent_growth" val="true"/>
     <par name="ode_accuracy" val="0.0001"/>
     <par name="mc_stepsize" val="0.4"/>
     <par name="mc_cell_stepsize" val="0.2"/>
-    <par name="energy_threshold" val="1000"/>
+    <par name="energy_threshold" val="10"/>
     <par name="bend_lambda" val="0"/>
     <par name="alignment_lambda" val="0"/>
     <par name="rel_cell_div_threshold" val="2"/>
@@ -37,7 +37,6 @@
     <par name="morphogen_expansion_threshold" val="0.01"/>
     <par name="copy_wall" val="true"/>
     <par name="source" val="0"/>
-    <par name="elastic_modulus" val="10" />
     <par name="D">
       <valarray>
         <val v="1e-06"/>
@@ -109,7 +108,7 @@
     <par name="rd_dt" val="10"/>
     <par name="movie" val="true"/>
     <par name="nit" val="100000"/>
-    <par name="maxt" val="100000"/>
+    <par name="maxt" val="1e6"/>
     <par name="rseed" val="-1"/>
     <par name="constituous_expansion_limit" val="16"/>
     <par name="vessel_inh_level" val="1"/>
@@ -159,20 +158,20 @@
     <par name="dir1" val="."/>
     <par name="dir2" val="."/>
   </parameter>
-  <nodes n="10" target_length="3.09017">
-    <node nr="0" x="10" y="0" fixed="false" boundary="true" sam="false"/>
-    <node nr="1" x="8.09017" y="5.87785" fixed="false" boundary="true" sam="false"/>
-    <node nr="2" x="3.09017" y="9.51057" fixed="false" boundary="true" sam="false"/>
-    <node nr="3" x="-3.09017" y="9.51057" fixed="false" boundary="true" sam="false"/>
-    <node nr="4" x="-8.09017" y="5.87785" fixed="false" boundary="true" sam="false"/>
-    <node nr="5" x="-10" y="1.22461e-15" fixed="false" boundary="true" sam="false"/>
-    <node nr="6" x="-8.09017" y="-5.87785" fixed="false" boundary="true" sam="false"/>
-    <node nr="7" x="-3.09017" y="-9.51057" fixed="false" boundary="true" sam="false"/>
-    <node nr="8" x="3.09017" y="-9.51057" fixed="false" boundary="true" sam="false"/>
-    <node nr="9" x="8.09017" y="-5.87785" fixed="false" boundary="true" sam="false"/>
+  <nodes n="10" target_length="6.180337">
+    <node x="10" y="0" fixed="false" boundary="true" sam="false"/>
+    <node x="8.09017" y="5.87785" fixed="false" boundary="true" sam="false"/>
+    <node x="3.09017" y="9.51057" fixed="false" boundary="true" sam="false"/>
+    <node x="-3.09017" y="9.51057" fixed="false" boundary="true" sam="false"/>
+    <node x="-8.09017" y="5.87785" fixed="false" boundary="true" sam="false"/>
+    <node x="-10" y="1.22461e-15" fixed="false" boundary="true" sam="false"/>
+    <node x="-8.09017" y="-5.87785" fixed="false" boundary="true" sam="false"/>
+    <node x="-3.09017" y="-9.51057" fixed="false" boundary="true" sam="false"/>
+    <node x="3.09017" y="-9.51057" fixed="false" boundary="true" sam="false"/>
+    <node x="8.09017" y="-5.87785" fixed="false" boundary="true" sam="false"/>
   </nodes>
   <cells n="1" offsetx="0" offsety="0" magnification="1" base_area="293.893" nchem="0">
-    <cell index="0" area="293.893" target_area="293.893" target_length="60" lambda_celllength="0" stiffness="0" fixed="false" pin_fixed="false" at_boundary="false" dead="false" source="false" boundary="None" div_counter="0" cell_type="0">
+    <cell index="0" area="293.893" target_area="293.893" target_length="61.8034" lambda_celllength="0" stiffness="0" fixed="false" pin_fixed="false" at_boundary="false" dead="false" source="false" boundary="None" div_counter="0" cell_type="0">
       <node n="0"/>
       <node n="1"/>
       <node n="2"/>
@@ -203,7 +202,7 @@
   <nodesets n="0"/>
   <settings>
     <setting name="show_cell_centers" val="false"/>
-    <setting name="show_nodes" val="false"/>
+    <setting name="show_nodes" val="true"/>
     <setting name="show_node_numbers" val="false"/>
     <setting name="show_cell_numbers" val="false"/>
     <setting name="show_border_cells" val="false"/>
@@ -211,7 +210,7 @@
     <setting name="show_cell_strain" val="false"/>
     <setting name="show_fluxes" val="false"/>
     <setting name="show_walls" val="false"/>
-    <setting name="save_movie_frames" val="true"/>
+    <setting name="save_movie_frames" val="false"/>
     <setting name="show_only_leaf_boundary" val="false"/>
     <setting name="cell_growth" val="true"/>
     <setting name="hide_cells" val="false"/>

@@ -2338,12 +2338,10 @@ Vector Cell::CalculateDivisionPlane()
 			return div_vec;
 
 		case MAX_STRESS_AXIS: {
-			// Calculate stress tensor for this cell
-			// Matrix stress = CalculateStressTensor();
-			// Find eigenvector corresponding to maximum eigenvalue
-			// Vector max_stress_axis = stress.GetEigenvectorOfMaxEigenvalue();
-			Vector max_stress_axis(0, 0, 0);  // Properly initialize the vector
-			return max_stress_axis;
+		    // Calculate principal stress axis for this cell
+		    Vector max_stress_axis = CalculatePrincipalStressAxis();
+
+		    return max_stress_axis;
 		}
 
 		case SHORT_AXIS: {
@@ -2363,12 +2361,8 @@ Vector Cell::CalculateDivisionPlane()
 		}
 
 		case PERP_STRESS: {
-			// Calculate stress tensor for this cell
-			// Matrix stress = CalculateStressTensor();
-			// // Find eigenvector corresponding to maximum eigenvalue
-			// Vector max_stress_axis = stress.GetEigenvectorOfMaxEigenvalue();
-			// Return perpendicular vector
-			Vector max_stress_axis(0, 0, 0);  // Properly initialize the vector
+			// Calculate principal stress axis and return its perpendicular
+		    Vector max_stress_axis = CalculatePrincipalStressAxis();
 			return max_stress_axis.Perp2D();
 		}
 

@@ -278,7 +278,7 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
 //     }
 // }
 void cambium::CellHouseKeeping(CellBase *c) {
-    c->SetDivisionType(MAX_STRESS_AXIS);
+    c->SetDivisionType(PERP_STRESS);
   // Set initial area on first call to this function for each cell
   static std::set<int> initialized_cells;
   if (initialized_cells.find(c->Index()) == initialized_cells.end()) {

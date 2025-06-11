@@ -196,7 +196,7 @@ class NodeSection:
     def __post_init__(self):
         self.nodes = [
             Node(
-                nr=int(n.attrib["nr"]),
+                nr=int(n.attrib.get("nr", 0)),
                 x=float(n.attrib["x"]),
                 y=float(n.attrib["y"]),
                 sam=_to_bool(n.attrib.get("sam")),
@@ -232,6 +232,9 @@ class Cell:
     @property
     def cell_type(self) -> int:
         return int(self.attributes.get("cell_type", 0))
+    @property
+    def target_area(self) -> float:
+        return float(self.attributes.get("target_area", 0.0))
 
 
 @dataclass

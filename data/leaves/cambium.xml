@@ -7,7 +7,7 @@
       <par val="3" name="cellnumsize"/>
       <par val="1" name="nodenumsize"/>
       <par val="1" name="node_mag"/>
-      <par val="1" name="outlinewidth"/>
+      <par val="0.01" name="outlinewidth"/>
       <par val="darkgray" name="cell_outline_color"/>
       <par val="10" name="resize_stride"/>
       <par val="0" name="export_interval"/>
@@ -106,7 +106,7 @@
       <par val="0.1" name="dt"/>
       <par val="10" name="rd_dt"/>
       <par val="0.174533" name="potential_slide_angle"/>
-      <par val="50" name="elastic_modulus"/>
+      <par val="1" name="elastic_modulus"/>
       <par val="true" name="movie"/>
       <par val="100000" name="nit"/>
       <par val="65535" name="compatibility_level"/>
@@ -161,7 +161,7 @@
       <par val="." name="dir1"/>
       <par val="." name="dir2"/>
    </parameter>
-   <nodes n="387" target_length="2.52183">
+   <nodes n="387" target_length="2.5">
       <node nr="0" x="253.99849999999984" y="242.24499999999972" sam="false" boundary="false" fixed="true"/>
       <node nr="1" x="253.64949999999996" y="246.59149999999988" sam="false" boundary="false" fixed="true"/>
       <node nr="2" x="253.52550000000002" y="250.8755000000007" sam="false" boundary="false" fixed="true"/>
@@ -1385,8 +1385,6 @@
          <node n="177"/>
          <node n="176"/>
          <node n="175"/>
-         <node n="174"/>
-         <node n="175"/>
          <node n="356"/>
          <node n="355"/>
          <node n="354"/>
@@ -1888,10 +1886,10 @@
    </walls>
    <nodesets n="0"/>
    <settings>
-      <setting val="true" name="show_cell_centers"/>
-      <setting val="true" name="show_nodes"/>
+      <setting val="false" name="show_cell_centers"/>
+      <setting val="false" name="show_nodes"/>
       <setting val="false" name="show_node_numbers"/>
-      <setting val="true" name="show_cell_numbers"/>
+      <setting val="false" name="show_cell_numbers"/>
       <setting val="false" name="show_borders_cells"/>
       <setting val="false" name="show_cell_axes"/>
       <setting val="false" name="show_cell_strain"/>

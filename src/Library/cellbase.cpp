@@ -706,4 +706,89 @@ double CellBase::SetInitialArea(void) {
     InitialArea = this->CalcArea();
     return InitialArea;
 }
+Vector CellBase::CalculatePrincipalStressAxis() {
+    cout << "CalculatePrincipalStressAxis" << endl;    // Calculate cell centroid
+    Vector centroid(0, 0, 0);
+    int n = nodes.size();
+  for (auto it = nodes.begin(); it != nodes.end(); it++) {
+    centroid += Vector((*it)->x, (*it)->y, (*it)->z);
+  }
+    centroid = centroid * (1.0 / n);
+
+    // Construct stress tensor
+    double stress_tensor[2][2] = {{0, 0}, {0, 0}};
+
+    // Calculate stress contribution from each wall
+    for (auto wall_it = walls.begin(); wall_it != walls.end(); ++wall_it) {
+        Wall* wall = *wall_it;
+        Vector wall_vec = Vector(wall->n2->x - wall->n1->x, wall->n2->y - wall->n1->y, wall->n2->z - wall->n1->z);
+        double wall_length = wall_vec.Norm();
+
+        if (wall_length > 0) {
+            // Normalize wall vector
+            wall_vec = wall_vec * (1.0 / wall_length);
+
+          // Get wall tension (stress)
+            double wall_stiffness;
+            if (std::isnan(wall->c1WallStiffness)) {
+              wall_stiffness = std::max(wall->c1->GetWallStiffness(), wall->c2WallStiffness);
+            } else if (std::isnan(wall->c2WallStiffness)) {
+              wall_stiffness = std::max(wall->c2->GetWallStiffness(), wall->c1WallStiffness);
+            } else {
+              wall_stiffness = std::max(wall->c1WallStiffness, wall->c2WallStiffness);
+            }
+            double wall_length_original = wall_vec.Norm();
+            double tension = wall_stiffness * (wall_length - wall_length_original) / wall_length_original;
+            // Add contribution to stress tensor (outer product)
+            stress_tensor[0][0] += tension * wall_vec.x * wall_vec.x;
+            stress_tensor[0][1] += tension * wall_vec.x * wall_vec.y;
+            stress_tensor[1][0] += tension * wall_vec.y * wall_vec.x;
+            stress_tensor[1][1] += tension * wall_vec.y * wall_vec.y;
+        }
+    }
+
+    // Calculate eigenvalues and eigenvectors to find principal stress
+    double trace = stress_tensor[0][0] + stress_tensor[1][1];
+    double det = stress_tensor[0][0] * stress_tensor[1][1] - stress_tensor[0][1] * stress_tensor[1][0];
+
+    // Eigenvalues
+    double lambda1 = (trace + sqrt(trace * trace - 4 * det)) / 2;
+    double lambda2 = (trace - sqrt(trace * trace - 4 * det)) / 2;
+
+    // Eigenvector for the larger eigenvalue is the principal stress direction
+    Vector principal_stress;
+    if (fabs(lambda1) >= fabs(lambda2)) {
+        // Calculate eigenvector for lambda1
+        if (fabs(stress_tensor[0][1]) > 1e-10) {
+            principal_stress = Vector(stress_tensor[0][1], lambda1 - stress_tensor[0][0], 0);
+        } else if (fabs(stress_tensor[1][0]) > 1e-10) {
+            principal_stress = Vector(lambda1 - stress_tensor[1][1], stress_tensor[1][0], 0);
+        } else {
+            // Diagonal matrix - eigenvectors are axis-aligned
+            principal_stress = (fabs(stress_tensor[0][0]) > fabs(stress_tensor[1][1])) ?
+                               Vector(1, 0, 0) : Vector(0, 1, 0);
+        }
+    } else {
+        // Calculate eigenvector for lambda2
+        if (fabs(stress_tensor[0][1]) > 1e-10) {
+            principal_stress = Vector(stress_tensor[0][1], lambda2 - stress_tensor[0][0], 0);
+        } else if (fabs(stress_tensor[1][0]) > 1e-10) {
+            principal_stress = Vector(lambda2 - stress_tensor[1][1], stress_tensor[1][0], 0);
+        } else {
+            // Diagonal matrix - eigenvectors are axis-aligned
+            principal_stress = (fabs(stress_tensor[0][0]) < fabs(stress_tensor[1][1])) ?
+                               Vector(1, 0, 0) : Vector(0, 1, 0);
+        }
+    }
+
+    // Normalize the principal stress vector
+    principal_stress.Normalise();
+
+    std::cout << "Cell " << index << ": Calculated principal stress axis = ("
+              << principal_stress.x << ", " << principal_stress.y << ", "
+              << principal_stress.z << ")" << std::endl;
+
+    return principal_stress;
+}
+
 /* finis*/
