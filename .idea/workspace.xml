@@ -22,29 +22,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/customTargets.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/tools/External Tools.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Old_run_in_batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VirtualLeaf2021.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VirtualLeaf2021.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_05_2025_13_42_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_05_2025_13_42__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Change_XML.py" beforeDir="false" afterPath="$PROJECT_DIR$/Change_XML.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creating Cambium XML.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/leaves/cambium_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/leaves/cambium_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/VirtualLeaf.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/VirtualLeaf.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/cell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/cell.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/cellbase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/cellbase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/cellbase.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/cellbase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/parameter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/parameter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/structure_trois_cercles.xml" beforeDir="false" />
     </list>
     <list id="c3511b96-6471-40bb-ab41-eb1831d40cb5" name="Changes2" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic" />
     <option name="SHOW_DIALOG" value="false" />
@@ -493,7 +472,7 @@
       <workItem from="1749049693808" duration="2453000" />
       <workItem from="1749052198286" duration="1119000" />
       <workItem from="1749654259616" duration="10758000" />
-      <workItem from="1749733937435" duration="11211000" />
+      <workItem from="1749733937435" duration="12341000" />
     </task>
     <task id="LOCAL-00001" summary="Update copilot instructions: enhance context awareness and clarify core library structure">
       <option name="closed" value="true" />

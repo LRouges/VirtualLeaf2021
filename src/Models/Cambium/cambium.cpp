@@ -295,78 +295,67 @@ void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
                 if (!neighbor) continue;
                 if (neighbor->CellType() == 3) has_type3_neighbor = true;
                 if (neighbor->CellType() == 4) has_type4_neighbor = true;
-        }
-    if (has_type3_neighbor && has_type4_neighbor ) {
-        special_division_cells.insert(c->Index());
-        c->Divide();
-        return;
-    }
-}
-    if (c->CellType() == 2) {
-        std::vector<int> neighbors = c->GetNeighborIndices();
-        bool has_type1_neighbor = false;
-        for (int idx : neighbors) {
-            CellBase* neighbor = GetCellByIndex(idx);
-            if (neighbor && neighbor->CellType() == 1) {
-                has_type1_neighbor = true;
-                break;
+            }
+            if (has_type3_neighbor && has_type4_neighbor ) {
+                special_division_cells.insert(c->Index());
+                c->Divide();
+                return;
             }
         }
-        if (!has_type1_neighbor) {
-            c->SetCellType(0); // Devient une cellule de type 0 (bark)
-            UpdateCellTypeLists(c->Index(), 0);
-            return;
+
+        else if (c->CellType() == 2) {
+            std::vector<int> neighbors = c->GetNeighborIndices();
+            bool has_type1_neighbor = false;
+            for (int idx : neighbors) {
+                CellBase* neighbor = GetCellByIndex(idx);
+                if (neighbor && neighbor->CellType() == 1) {
+                    has_type1_neighbor = true;
+                    break;
+                }
+            }
+            if (!has_type1_neighbor) {
+                c->SetCellType(0); // Devient une cellule de type 0 (bark)
+                UpdateCellTypeLists(c->Index(), 0);
+                return;
+            }
+        }
+
+        c->EnlargeTargetArea(par->cell_expansion_rate);
+        if (c->Area() > par->rel_cell_div_threshold * c->BaseArea()) {
+          c->Divide();
         }
     }
 
-    c->EnlargeTargetArea(par->cell_expansion_rate);
-    if (c->Area() > par->rel_cell_div_threshold * c->BaseArea()) {
-      c->Divide();
-    }
-//    std::pair<double, double> lengthAndWidth = c->GetLengthAndWidth();
-//    double longueur = lengthAndWidth.first;
-//    double largeur  = lengthAndWidth.second;
-//    std::cout << "Longueur : " << longueur << ", Largeur : " << largeur << std::endl;
-//
-//    if (c->Area() > par->rel_cell_div_threshold * c->BaseArea()) || (largeur / longueur <= 0.25) {
-//    // Critère atteint, déclencher la division
-//    cell->Divide(); // ou la méthode appropriée pour diviser la cellule
-//    }
-
-  }
-  else if(c->CellType() == 3) { // If cell is a type 3, grow until it reach 3*BaseArea then transform into a Type 4
-    if (c->Area() > 500) {
+    else if(c->CellType() == 3) { // If cell is a type 3, grow until it reach 3*BaseArea then transform into a Type 4
         std::vector<int> neighbors = c->GetNeighborIndices();
         bool has_type2_neighbor = false;
         for (int idx : neighbors) {
             CellBase* neighbor = GetCellByIndex(idx);
             if (neighbor && neighbor->CellType() == 2) {
                 has_type2_neighbor = true;
-                break;
+            break;
             }
         }
-
-        if (has_type2_neighbor) {
+        if (has_type2_neighbor && c->Area() > 500) {
             // Déclencher la division spéciale
             special_division_cells.insert(c->Index());
             c->Divide();
             return;
         }
-    }
-    else if (c->Area() < 3 * c->BaseArea()) {
-      c->EnlargeTargetArea(par->cell_expansion_rate);
-    }
 
-    else {
-      c->SetCellType(4); // Set grown Type 2 cell to a Type 3
+        else if (c->Area() < 3 * c->BaseArea()) {
+          c->EnlargeTargetArea(par->cell_expansion_rate);
+        }
+
+        else {
+          c->SetCellType(4); // Set grown Type 2 cell to a Type 3
+        }
     }
-  }
 
 
   else if (c->CellType() == 0) {
   /* If the cell is a bark cell (type 0), we need to slightly enlarge it to prevent excessive stretching,
      which could cause issues in the simulation. This adjustment ensures stability during runtime. */
-    if (c->Area() > 500){
     std::vector<int> neighbors = c->GetNeighborIndices();
     bool has_type1_neighbor = false;
 
@@ -378,17 +367,17 @@ void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
         }
     }
 
-    if (has_type1_neighbor) {
+    if (has_type1_neighbor && c->Area() > 500) {
         // Déclencher la division spéciale
         special_division_cells.insert(c->Index());
         c->Divide();
         return;
     }
-    }
+
     else {
         c->EnlargeTargetArea(par->cell_expansion_rate);
     }
-
+  }
 
 //  // Get current area values
 //  double area = c->Area();
@@ -438,7 +427,7 @@ void cambium::CellHouseKeeping(CellBase *c) { // How cells behave after division
 //               << "Rate:" << par->cell_expansion_rate;
 //    }
 //  }
-}
+
 }
 
 
