@@ -62,8 +62,7 @@
       <node index="58" x="14.4671" y="-8.3526"/>
       <node index="59" x="16.1359" y="-4.3236"/>
    </nodes>
-   <cells n="49">
-      <cell index="0" boundary="false">
+
          <nodelist>
             <noderef node="0"/>
             <noderef node="1"/>

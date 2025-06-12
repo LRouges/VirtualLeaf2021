@@ -21,10 +21,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic" />
     <list id="c3511b96-6471-40bb-ab41-eb1831d40cb5" name="Changes2" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +127,7 @@
     "Shell Script.Unnamed.executor": "Run",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Rouges",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/Rojas/PycharmProjects/VirtualLeaf2021",
     "node.js.detected.package.eslint": "true",
