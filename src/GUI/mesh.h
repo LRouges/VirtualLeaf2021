@@ -386,7 +386,6 @@ class Mesh {
 
   void XMLSave(const char *docname, QDomElement &settings) const;
   void XMLRead(const char *docname, QDomElement &settings, bool geometry = true, bool pars = true, bool simtime = true);
-  //void QtXMLRead(const char *docname, QDomElement &settings, bool geometry = true, bool pars = true, bool simtime = true);
   void XMLReadPars(const QDomElement &a_node);
   void XMLReadGeometry(QDomElement root_node);
   void XMLReadSimtime(const QDomElement &root_node);
@@ -407,6 +406,7 @@ class Mesh {
   void PrintWallList( void );
   void TestIllegalWalls(void);
   Vector FirstConcMoment(int chem);
+
   inline Vector Centroid(void) {
     return boundary_polygon->Centroid();
   }

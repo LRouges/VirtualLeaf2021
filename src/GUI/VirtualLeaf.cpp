@@ -185,7 +185,7 @@ void MainBase::Plot(int resize_stride)
       PNGname.width(6);
       PNGname << count << ".png";
       // Write high-res PNG snapshot every plot step
-      Save(PNGname.str().c_str(), "PNG", 1024, 768);
+      Save(PNGname.str().c_str(), "PNG", 2560, 2560);
     //}
     }
 
@@ -206,7 +206,7 @@ void MainBase::Plot(int resize_stride)
       PDFname.width(6);
       PDFname << count << ".pdf";
       // Write PDF snapshot with every xml file
-      Save(PDFname.str().c_str(), "PDF", 1024, 768);
+      Save(PDFname.str().c_str(), "PDF", 2560, 1440);
     }
   
 }

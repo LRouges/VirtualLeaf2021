@@ -339,6 +339,7 @@ Vector CellBase::Centroid(void) const
   Vector centroid(integral_x_dxdy,integral_y_dxdy,0);
   centroid/=area;
   return centroid;
+
 }
 
 
@@ -507,6 +508,68 @@ double CellBase::CalcLength(Vector *long_axis, double *width)  const
 
   return 4*sqrt(lambda_b/my_area);
 }
+
+
+std::pair<double, double> CellBase::GetLengthAndWidth() const
+{
+    // Calculs identiques à CalcLength
+    double my_intgrl_xx=0., my_intgrl_xy=0., my_intgrl_yy=0.;
+    double my_intgrl_x=0., my_intgrl_y=0., my_area=0.;
+    my_area=0.;
+    auto nb = nodes.begin();
+    auto i = nodes.begin();
+
+    for (; i != nodes.end(); i++) {
+        nb = i; nb++; if (nb == nodes.end()) nb = nodes.begin();
+
+        my_area += (*i)->x * (*nb)->y;
+        my_area -= (*nb)->x * (*i)->y;
+        my_intgrl_xx +=
+            ((*i)->x * (*i)->x +
+             (*nb)->x * (*i)->x +
+             (*nb)->x * (*nb)->x) *
+            ((*i)->x * (*nb)->y -
+             (*nb)->x * (*i)->y);
+        my_intgrl_xy +=
+            ((*nb)->x * (*i)->y -
+             (*i)->x * (*nb)->y) *
+            ((*i)->x * (2 * (*i)->y + (*nb)->y) +
+             (*nb)->x * ((*i)->y + 2 * (*nb)->y));
+        my_intgrl_yy +=
+            ((*i)->x * (*nb)->y -
+             (*nb)->x * (*i)->y) *
+            ((*i)->y * (*i)->y +
+             (*nb)->y * (*i)->y +
+             (*nb)->y * (*nb)->y);
+        my_intgrl_x +=
+            ((*nb)->x + (*i)->x) *
+            ((*i)->x * (*nb)->y -
+             (*nb)->x * (*i)->y);
+        my_intgrl_y +=
+            ((*nb)->y + (*i)->y) *
+            ((*i)->x * (*nb)->y -
+             (*nb)->x * (*i)->y);
+    }
+
+    my_area = fabs(my_area) / 2.0;
+
+    double intrx = my_intgrl_x / 6.;
+    double intry = my_intgrl_y / 6.;
+    double ixx = (my_intgrl_xx / 12.) - (intrx * intrx) / my_area;
+    double ixy = (my_intgrl_xy / 24.) + (intrx * intry) / my_area;
+    double iyy = (my_intgrl_yy / 12.) - (intry * intry) / my_area;
+
+    double rhs1 = (ixx + iyy) / 2., rhs2 = sqrt((ixx - iyy) * (ixx - iyy) + 4 * ixy * ixy) / 2.;
+
+    double lambda_b = rhs1 + rhs2;
+    double lambda_s = rhs1 - rhs2;
+
+    double length = 4 * sqrt(lambda_b / my_area);
+    double width  = 4 * sqrt(lambda_s / my_area);
+
+    return std::make_pair(length, width);
+}
+
 
 WallBase* CellBase::newWall(NodeBase* from,NodeBase* to,CellBase * other){
 	return NULL;
@@ -701,4 +764,10 @@ void CellBase::correctNeighbors() {}
 double CellBase::elastic_limit() {
 	return std::nan("1");
 }
+
+double CellBase::SetInitialArea(void) {
+    InitialArea = this->CalcArea();
+    return InitialArea;
+}
+//  void XMLReadSimtime(const QDomElement &root_node);
 /* finis*/

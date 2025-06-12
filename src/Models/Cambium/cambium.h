@@ -26,6 +26,7 @@
 #include <QString>
 #include <set>
 #include "simplugin.h"
+#include <QDomElement>
 
 
 
@@ -62,11 +63,16 @@ public:
 	virtual void SetCellColor(CellBase *c, QColor *color);
 	// return number of chemicals
 	virtual int NChem(void);
-	virtual QString DefaultLeafML(void) { return QString("cambium.XML"); }
+	virtual QString DefaultLeafML(void) { return QString("cambium_nCercles.XML"); }
 
 	virtual void SetCellTypeProperties(CellBase *c);
 
+    //Test nouveau tissu Rouges
+    CellBase* GetCellByIndex(int idx);
 
+    // Pour lire le temps de simulation depuis le XML
+//    virtual void XMLReadSimtime(const QDomElement &root_node);
+//
 	// For internal use; not to be redefined by end users
 //    virtual void SetParameters(Parameter *pass_pars) { par = pass_pars; }
 //    virtual void SetCellsStaticDatamembers (CellsStaticDatamembers *cells_static_data_members_of_main);
@@ -76,8 +82,16 @@ public:
 
 private:
 	// bark_cells should be defined in cambium.h, not here
+	 void UpdateCellTypeLists(int idx, int type); // Gestion des listes des cellules pour la division
      std::vector<int> bark_cells;
-     std::set<int> special_division_cells;  // Pour stocker les ID des cellules qui doivent se diviser de manière spéciale
+     std::vector<int> cambium_cells;
+     std::vector<int> gx_cells;
+     std::vector<int> mx_cells;
+     std::map<int, int> last_cell_types; // index -> dernier type connu
 
+     std::map<int, CellBase*> cell_registry;
+     std::set<int> special_division_cells;  // Pour stocker les ID des cellules qui doivent se diviser de manière spéciale
+     double simulation_time; // Variable pour stocker le temps de simulation
+     double aire_instant_t0 = 0.0; // Aire à t = 0
 
 };

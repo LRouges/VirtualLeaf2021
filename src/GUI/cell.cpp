@@ -469,6 +469,8 @@ void Cell::DivideWalls(ItList new_node_locations, const Vector from, const Vecto
   parent_info.polarization.Normalise();
   parent_info.PINmembrane = SumTransporters(1);
   parent_info.PINendosome = Chemical(1);
+  parent_info.ParentCellType = CellType();
+  parent_info.ParentCentroid = Centroid();
 
   //cerr << "Parent polarization before division: " << parent_info.polarization << endl;
 
