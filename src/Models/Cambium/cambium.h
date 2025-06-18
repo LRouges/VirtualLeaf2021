@@ -67,26 +67,21 @@ public:
 
 	virtual void SetCellTypeProperties(CellBase *c);
 
+
     //Test nouveau tissu Rouges
     CellBase* GetCellByIndex(int idx);
-
-    // Pour lire le temps de simulation depuis le XML
-//    virtual void XMLReadSimtime(const QDomElement &root_node);
-//
-	// For internal use; not to be redefined by end users
-//    virtual void SetParameters(Parameter *pass_pars) { par = pass_pars; }
-//    virtual void SetCellsStaticDatamembers (CellsStaticDatamembers *cells_static_data_members_of_main);
-//
-//protected:
-//    class Parameter *par;
+    // Dans la section public de la classe cambium
+    std::pair<double, double> DetermineRadialOrientation(CellBase *c);
+    virtual DivisionType DividingRules(CellBase *c, int division_rule_case);
 
 private:
 	// bark_cells should be defined in cambium.h, not here
 	 void UpdateCellTypeLists(int idx, int type); // Gestion des listes des cellules pour la division
      std::vector<int> bark_cells;
-     std::vector<int> cambium_cells;
-     std::vector<int> gx_cells;
-     std::vector<int> mx_cells;
+     std::vector<int> bark_cambium_cells;
+     std::vector<int> xylem_cambium_cells;
+     std::vector<int> growing_xylem_cells;
+     std::vector<int> mature_xylem_cells;
      std::map<int, int> last_cell_types; // index -> dernier type connu
 
      std::map<int, CellBase*> cell_registry;

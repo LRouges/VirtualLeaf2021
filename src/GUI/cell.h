@@ -34,6 +34,8 @@
 #include "warning.h"
 #include "cellbase.h"
 #include "Neighbor.h"
+#include "random.h"
+#include "pi.h"
 //#include "cell.h"
 
 #include <QGraphicsScene>
@@ -94,11 +96,70 @@ class Cell : public CellBase
   // divide over the line (if line and cell intersect)
   bool DivideOverGivenLine(const Vector v1, const Vector v2, bool wall_fixed = false, NodeSet *node_set = 0);
 
-  void Divide(void) { // Divide cell over short axis
+ void Divide(void) { // Divide cell based on division_type
+    std::cout << "Cell " << index << ": Starting division process" << std::endl;
+    Vector axis;
+    Length(&axis); // Get the long axis
+    std::cout << "Cell " << index << ": Long axis = (" << axis.x << ", " << axis.y << ", " << axis.z << ")" << std::endl;
 
-    Vector long_axis; 
-    Length(&long_axis); 
-    DivideOverAxis(long_axis.Perp2D());
+    switch (division_type) {
+      case NO_DIVISION:
+        std::cout << "Cell " << index << ": Division type = NO_DIVISION, skipping" << std::endl;
+        return;
+      case RANDOM_DIVISION:
+      {
+        std::cout << "Cell " << index << ": Division type = RANDOM_DIVISION" << std::endl;
+        // Random angle between 0 and π
+        double orientation = Pi*RANDOM();
+        Vector divAxis(sin(orientation), cos(orientation), 0.);
+        std::cout << "Cell " << index << ": Random division axis = (" << divAxis.x << ", " << divAxis.y << ", " << divAxis.z << "), orientation = " << orientation << std::endl;
+        DivideOverAxis(divAxis);
+      }
+        break;
+      case MAX_STRESS_AXIS:
+        std::cout << "Cell " << index << ": Division type = MAX_STRESS_AXIS" << std::endl;
+        // Calculate principal stress axis and divide along it
+        {
+          Vector stressAxis = CalculateDivisionPlane();
+          std::cout << "Cell " << index << ": Stress division axis = (" << stressAxis.x << ", " << stressAxis.y << ", " << stressAxis.z << ")" << std::endl;
+          DivideOverAxis(stressAxis);
+        }
+        break;
+      case SHORT_AXIS:
+        std::cout << "Cell " << index << ": Division type = SHORT_AXIS" << std::endl;
+        // Divide over short axis (perpendicular to long axis)
+        {
+          Vector shortAxis = axis.Perp2D();
+          std::cout << "Cell " << index << ": Short axis = (" << shortAxis.x << ", " << shortAxis.y << ", " << shortAxis.z << ")" << std::endl;
+          DivideOverAxis(shortAxis);
+        }
+        break;
+      case LONG_AXIS:
+        std::cout << "Cell " << index << ": Division type = LONG_AXIS" << std::endl;
+        // Divide over long axis
+        std::cout << "Cell " << index << ": Using long axis for division" << std::endl;
+        DivideOverAxis(axis);
+        break;
+      case PERP_STRESS:
+        std::cout << "Cell " << index << ": Division type = PERP_STRESS" << std::endl;
+        // Divide perpendicular to principal stress
+        {
+          Vector perpStressAxis =  CalculateDivisionPlane();
+          std::cout << "Cell " << index << ": Perpendicular stress axis = (" << perpStressAxis.x << ", " << perpStressAxis.y << ", " << perpStressAxis.z << ")" << std::endl;
+          DivideOverAxis(perpStressAxis);
+        }
+        break;
+      default:
+        std::cout << "Cell " << index << ": Division type = UNKNOWN (" << division_type << "), defaulting to SHORT_AXIS" << std::endl;
+        // Default to short axis division
+        {
+          Vector shortAxis = axis.Perp2D();
+          std::cout << "Cell " << index << ": Default short axis = (" << shortAxis.x << ", " << shortAxis.y << ", " << shortAxis.z << ")" << std::endl;
+          DivideOverAxis(shortAxis);
+        }
+        break;
+    }
+    std::cout << "Cell " << index << ": Division complete" << std::endl;
   }
 
   //void CheckForGFDrivenDivision(void);
@@ -179,7 +240,7 @@ class Cell : public CellBase
   void findBeforeAfter(Node * node, Node ** before, Node**after);
   Cell* findOtherCell(Cell*other,  Node * node,  Node * node2);
   Cell* findNeighbourCellOnDivide(Cell* daughter,Node* node,Node * before1,Node * after1 ,Node * before2,Node * after2);
-
+  Vector CalculateDivisionPlane();
 };
 
 

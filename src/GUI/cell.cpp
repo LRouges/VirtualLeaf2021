@@ -20,7 +20,6 @@
  */
 
 #include <QDebug>
-
 #include <string>
 #include "pi.h"
 #include "cell.h"
@@ -33,6 +32,7 @@
 #include "qcanvasarrow.h"
 #include "parameter.h"
 
+// Division type enumeration
 
 static const std::string _module_id("$Id$");
 
@@ -78,8 +78,8 @@ void Cell::DivideOverAxis(Vector axis)
 
   if (dead) return;
 
-  Vector centroid=Centroid();
-  double prev_cross_z=(axis * (centroid - *(nodes.back()) ) ).z ;
+  Vector centroid = Centroid();
+  double prev_cross_z = (axis * (centroid - *(nodes.back()))).z ;
 
   ItList new_node_locations;
 
@@ -88,12 +88,12 @@ void Cell::DivideOverAxis(Vector axis)
     // cross product to detect position of division
     Vector cross = axis * (centroid - *(*i));
 
-    if (cross.z * prev_cross_z < 0 ) {
+    if (cross.z * prev_cross_z < 0) {
 
       new_node_locations.push_back(i);
 
     }		
-    prev_cross_z=cross.z;
+    prev_cross_z = cross.z;
   }
 
   DivideWalls(new_node_locations, centroid, centroid+axis);
@@ -2308,5 +2308,55 @@ void Cell::correctNeighbors() {
 double Cell::elastic_limit() {
 	return this->m->elastic_limit;
 }
+Vector Cell::CalculateDivisionPlane()
+{
+	Vector div_vec;
 
+	switch (division_type) {
+		case NO_DIVISION:
+			// No division, return empty vector
+			return Vector(0, 0, 0);
+
+		case RANDOM_DIVISION:
+			// Random division vector
+			div_vec = Vector(RANDOM() - 0.5, RANDOM() - 0.5, 0);
+			div_vec.Normalise();
+			return div_vec;
+
+		case MAX_STRESS_AXIS: {
+		    // Calculate principal stress axis for this cell
+		    Vector max_stress_axis = CalculatePrincipalStressAxis();
+
+		    return max_stress_axis;
+		}
+
+		case SHORT_AXIS: {
+			// Use the short axis of the cell for division
+			Vector long_axis;
+			double width;
+			Length(&long_axis, &width);
+			return long_axis.Perp2D(); // Perpendicular to long axis = short axis
+		}
+
+		case LONG_AXIS: {
+			// Use the long axis of the cell for division
+			Vector long_axis;
+			double width;
+			Length(&long_axis, &width);
+			return long_axis;
+		}
+
+		case PERP_STRESS: {
+			// Calculate principal stress axis and return its perpendicular
+		    Vector max_stress_axis = CalculatePrincipalStressAxis();
+			return max_stress_axis.Perp2D();
+		}
+
+		default:
+			// Default to random division
+			div_vec = Vector(RANDOM() - 0.5, RANDOM() - 0.5, 0);
+			div_vec.Normalise();
+			return div_vec;
+	}
+}
 /* finis */

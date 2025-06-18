@@ -11,7 +11,7 @@ doc.leaf.name = "Cambium_New"
 doc.leaf.date = str(date.today())
 doc.leaf.simtime = 0
 
-output_xml = "data/leaves/cambium_new.xml"
+output_xml = "data/leaves/cambium_test_new.xml"
 datadir = "/home/rojas/Cambium_New01"
 # Parameters
 doc.parameter.set_parameter(name='datadir',value=datadir)

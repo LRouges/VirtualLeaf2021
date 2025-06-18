@@ -161,21 +161,18 @@
       <par val="." name="dir1"/>
       <par val="." name="dir2"/>
    </parameter>
+
   <nodes n="" target_length="">
     <node nr="" x="" y="" fixed="" boundary="" sam=""/>
   </nodes>
   <cells n="" offsetx="" offsety="" magnification="" base_area="" nchem="">
     <cell index="" cell_type="" area="" target_area="" target_length="" lambda_celllength="" stiffness="" fixed="" pin_fixed="" boundary="" at_boundary="" dead="" source="" div_counter="">
   </cell>
-    
-  
     <boundary_polygon index="" cell_type="" area="" target_area="" target_length="" lambda_celllength="" stiffness="" fixed="" pin_fixed="" boundary="" at_boundary="" dead="" source="" div_counter="">
   </boundary_polygon>
-    
-
   </cells>
   <walls n="">
-</walls>
+  </walls>
   <nodesets n=""/>
    <settings>
       <setting val="true" name="show_cell_centers"/>

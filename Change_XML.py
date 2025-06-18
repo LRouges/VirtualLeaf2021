@@ -5,12 +5,12 @@ import numpy as np
 from virtualleaf_xml_model import VirtualLeaf_XML, Node
 import math
 
-doc = VirtualLeaf_XML("data/leaves/cambium_new.xml")
+doc = VirtualLeaf_XML("data/leaves/cambium_test_new.xml")
 doc.leaf.name = "Cambium_01"
 doc.leaf.date = str(date.today())
 doc.leaf.simtime = 0
 
-output_xml = "data/leaves/Cambium_nCercles.xml"
+output_xml = "data/leaves/Cambium_nCercles_new.xml"
 datadir = "/home/rojas/Cambium_New01"
 # Parameters
 doc.parameter.set_parameter(name='datadir',value=datadir)

@@ -177,7 +177,7 @@ def creer_noeuds_initiaux(n, rayon_n_cercles, a):
 #------------- FUSION DES NOEUDS PROCHES ------------------------------------------------------------#
 #----------------------------------------------------------------------------------------------------#
 
-def fusionner_noeuds(k_noeuds_n_cercle_polaire, n, index_noeud_depart=0, seuil_distance=5):
+def fusionner_noeuds(k_noeuds_n_cercle_polaire, n, index_noeud_depart=0, seuil_distance=1):
     """ Fusionne les nœuds qui se chevauchent.
 
         Args:
@@ -390,7 +390,7 @@ def creer_cellules(k_noeuds_n_cercle_polaire, n, a,cell_type):
             noeud1, noeud2, noeud3, noeud4 = None, None, None, None
             angle1, angle2, angle3, angle4 = None, None, None, None
             r1, r2, r3, r4 = None, None, None, None
-            tolerance = 0.001
+            tolerance = 0.01
 
             # Recherche optimisée des nœuds aux angles spécifiques
             for point in noeuds_par_cercle[i]:
@@ -1288,21 +1288,21 @@ def tracer_cellules(points, cellules):
 def generer_donnees():
 
     #1st Radius
-    rayon_0 = 30
+    rayon_0 = 60
 
     #Number of cells per rings
-    a = [12,12,15]
+    a = [16,20]
 
     # Type of cells (must be length of a) : 0 = bark, 1 = cambium 2 = Growing Xylem, 3 = Mature Xylem
-    cell_type = [1,2,0]
+    cell_type = [2,0]
 
     #ratio between width and length of initial cells, pilots radius
-    rapport_R_T = [1, 1, 1]
+    rapport_R_T = [1, 0.75]
 
     #Number of radius, length of a +1 bcs len(a) is the number of cell rings except ring 0
     n = len(a)+1
 
-    seuil_proximite = 1
+    seuil_proximite = 0.1
     longueur_max_cercles = 10 # Seuil pour les segments circulaires
     longueur_max_radiaux = 10 # Seuil pour les segments radiaux
     maillage = True
