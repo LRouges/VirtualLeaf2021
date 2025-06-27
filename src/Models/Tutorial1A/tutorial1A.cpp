@@ -56,7 +56,8 @@ void Tutorial1A::CellHouseKeeping(CellBase *c) {
   cout << "Cell base Area: " << c->BaseArea() << endl;
   cout << "Cell current Area: " << c->Area() << endl;
   cout << "Cell Target Area: " << c->TargetArea() << endl;
-  c->SetLambdaLength(100);
+  c->SetLambdaLength(1);
+  cout << "Cell lambda length: " << c->GetLambdaLength() << endl;
 
 
 	c->EnlargeTargetArea(par->cell_expansion_rate);
