@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="VirtualLeaf" targetName="all" />
+      <config projectName="VirtualLeaf" targetName="VirtualLeaf" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88a8b23e-73c3-4981-8a56-356a427b0206" name="Changes" comment="Add lambda length getter and update cell division logic: implement GetLambdaLength method, adjust lambda length settings in CellHouseKeeping, and clean up commented code" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/src">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/src/Models/Cambium">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ARDATI-Rami&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ARDATI-Rami/VirtualLeaf2021.git&quot;,
+    &quot;accountId&quot;: &quot;46d9b9c9-fed6-4371-9312-e4b72aadc5ea&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/ardati/PycharmProjects/VirtualLeaf2021/src/Library/cellbase.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="GUI_and_Library" pattern="file[VirtualLeaf2021]:src/GUI/*||file[VirtualLeaf2021]:src/Library/*" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="1.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2vOqQvZR8U6zPeP13eHpzbNb08E" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.VirtualLeaf.executor": "Run",
+    "Custom Build Application.VirtualLeaf Build & Run.executor": "Run",
+    "Makefile Target.Cambium.executor": "Run",
+    "Makefile Target.Makefile.executor": "Run",
+    "Makefile Target.first.executor": "Run",
+    "Makefile Target.sub-Models.executor": "Run",
+    "Native Application.VirtualLeaf.executor": "Run",
+    "Native Application.all.executor": "Run",
+    "Native Application.qmake.executor": "Run",
+    "Python.121.executor": "Run",
+    "Python.Change_XML.executor": "Run",
+    "Python.center_poly.executor": "Run",
+    "Python.expansion_rate_study.executor": "Run",
+    "Python.expansion_rate_study2.executor": "Run",
+    "Python.expansion_rate_study_1.executor": "Run",
+    "Python.expansion_rate_study_plot.executor": "Run",
+    "Python.expansion_rate_study_plot2.executor": "Run",
+    "Python.export_image.executor": "Run",
+    "Python.rewrite_xml.executor": "Run",
+    "Python.run_in_batch.executor": "Run",
+    "Python.stiffness_study.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHELLCHECK.PATH": "/home/ardati/.local/share/JetBrains/PyCharm2024.2/Shell Script/shellcheck",
+    "Shell Script.clion_build_run.sh.executor": "Run",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/ardati/PycharmProjects/VirtualLeaf2021/data/leaves",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/leaves" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/Models" />
+      <recent name="$PROJECT_DIR$/src/Models/rami_first_try" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Custom Build Application.VirtualLeaf Build &amp; Run">
+    <configuration name="VirtualLeaf Build &amp; Run" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VirtualLeaf" TARGET_NAME="Unnamed" CONFIG_NAME="Unnamed" RUN_PATH="$PROJECT_DIR$/bin/VirtualLeaf">
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Makefile" run_configuration_type="MAKEFILE_TARGET_RUN_CONFIGURATION" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Cambium" run_configuration_type="MAKEFILE_TARGET_RUN_CONFIGURATION" />
+      </method>
+    </configuration>
+    <configuration name="make" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VirtualLeaf" TARGET_NAME="make" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/bin/VirtualLeaf" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VirtualLeaf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VirtualLeaf" TARGET_NAME="VirtualLeaf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VirtualLeaf" RUN_TARGET_NAME="VirtualLeaf">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="EXTERNAL_TOOL_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-external>
+        <program>PYTHONTEX</program>
+        <main-file />
+        <work-dir />
+        <envs />
+      </texify-external>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <sumatra-path />
+        <pdf-viewer>EVINCE</pdf-viewer>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file />
+        <output-path>{projectDir}/out</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>false</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="Cambium" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile">
+      <makefile filename="$PROJECT_DIR$/src/Models/Cambium/Makefile" target="" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="Makefile" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile">
+      <makefile filename="$PROJECT_DIR$/src/Makefile" target="" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="first" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/src/Makefile" target="first" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="sub-Models" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/src/Makefile" target="sub-Models" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="MAKEINDEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-makeindex>
+        <program>MAKEINDEX</program>
+        <main-file />
+        <command-line-args />
+        <work-dir />
+      </texify-makeindex>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="expansion_rate_study_1" type="PythonConfigurationType" factoryName="Python">
+      <module name="VirtualLeaf2022" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="VirtualLeaf" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/expansion_rate_study.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="expansion_rate_study_plot2" type="PythonConfigurationType" factoryName="Python">
+      <module name="VirtualLeaf2022" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="VirtualLeaf" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/expansion_rate_study_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stiffness_study" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="VirtualLeaf2022" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stiffness_study.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="VirtualLeaf2021" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Unnamed" />
+      <item itemvalue="CMake Application.VirtualLeaf" />
+      <item itemvalue="Custom Build Application.VirtualLeaf Build &amp; Run" />
+      <item itemvalue="Makefile Target.Cambium" />
+      <item itemvalue="Makefile Target.Makefile" />
+      <item itemvalue="Makefile Target.first" />
+      <item itemvalue="Makefile Target.sub-Models" />
+      <item itemvalue="Native Application.make" />
+      <item itemvalue="Python.expansion_rate_study_plot2" />
+      <item itemvalue="Python.expansion_rate_study_1" />
+      <item itemvalue="Python.stiffness_study" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.stiffness_study" />
+        <item itemvalue="Makefile Target.sub-Models" />
+        <item itemvalue="Makefile Target.first" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88a8b23e-73c3-4981-8a56-356a427b0206" name="Changes" comment="" />
+      <created>1744026456349</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744026456349</updated>
+      <workItem from="1744026457613" duration="2898000" />
+      <workItem from="1744145216378" duration="8811000" />
+      <workItem from="1744176783251" duration="723000" />
+      <workItem from="1744177516351" duration="9000" />
+      <workItem from="1744177670466" duration="1259000" />
+      <workItem from="1744179300668" duration="6000" />
+      <workItem from="1744179320624" duration="589000" />
+      <workItem from="1744179934848" duration="419000" />
+      <workItem from="1744180373906" duration="5146000" />
+      <workItem from="1744273311991" duration="5561000" />
+      <workItem from="1744301821208" duration="1120000" />
+      <workItem from="1744302949126" duration="361000" />
+      <workItem from="1744303324282" duration="419000" />
+      <workItem from="1744616770748" duration="3685000" />
+      <workItem from="1744808845723" duration="8165000" />
+      <workItem from="1744894591730" duration="7727000" />
+      <workItem from="1745095478654" duration="8170000" />
+      <workItem from="1745138352825" duration="603000" />
+      <workItem from="1745256148233" duration="346000" />
+      <workItem from="1745311539099" duration="21434000" />
+      <workItem from="1745344101860" duration="198000" />
+      <workItem from="1745344324633" duration="8975000" />
+      <workItem from="1745395674048" duration="20466000" />
+      <workItem from="1745472010554" duration="1410000" />
+      <workItem from="1746458654769" duration="4304000" />
+      <workItem from="1746520305101" duration="25246000" />
+      <workItem from="1746569721362" duration="19071000" />
+      <workItem from="1746622851575" duration="1367000" />
+      <workItem from="1746625402586" duration="582000" />
+      <workItem from="1746704008671" duration="84170000" />
+      <workItem from="1746997368837" duration="447000" />
+      <workItem from="1746997855868" duration="8456000" />
+      <workItem from="1747040781385" duration="9790000" />
+      <workItem from="1747053411957" duration="10370000" />
+      <workItem from="1747130834863" duration="2093000" />
+      <workItem from="1747162891757" duration="6000" />
+      <workItem from="1747164581945" duration="991000" />
+      <workItem from="1747339592348" duration="2000" />
+      <workItem from="1747409852008" duration="25000" />
+      <workItem from="1747498677437" duration="288000" />
+      <workItem from="1747498978416" duration="606000" />
+      <workItem from="1747507494418" duration="140000" />
+      <workItem from="1747507642745" duration="336000" />
+      <workItem from="1747508128837" duration="1956000" />
+      <workItem from="1747656013445" duration="4986000" />
+      <workItem from="1747662224805" duration="6137000" />
+      <workItem from="1747687353276" duration="3548000" />
+      <workItem from="1747715270890" duration="20331000" />
+      <workItem from="1747748147104" duration="8503000" />
+      <workItem from="1747831931892" duration="3361000" />
+      <workItem from="1747929882295" duration="46000" />
+      <workItem from="1747929962684" duration="1186000" />
+      <workItem from="1747931339771" duration="6989000" />
+      <workItem from="1747943421322" duration="367000" />
+      <workItem from="1747943804439" duration="3921000" />
+      <workItem from="1748019583741" duration="70000" />
+      <workItem from="1748019856067" duration="776000" />
+      <workItem from="1749040685425" duration="8620000" />
+      <workItem from="1749142742590" duration="179000" />
+      <workItem from="1749144226046" duration="4659000" />
+      <workItem from="1749409455753" duration="976000" />
+      <workItem from="1749410443037" duration="137000" />
+      <workItem from="1749550800165" duration="10894000" />
+      <workItem from="1749567927701" duration="997000" />
+      <workItem from="1749574616108" duration="6683000" />
+      <workItem from="1749585765552" duration="5443000" />
+      <workItem from="1749630770497" duration="10278000" />
+      <workItem from="1749643001117" duration="2998000" />
+      <workItem from="1749646541931" duration="12416000" />
+      <workItem from="1749673741060" duration="592000" />
+      <workItem from="1750663206489" duration="1728000" />
+      <workItem from="1750664957583" duration="18326000" />
+      <workItem from="1750702974550" duration="2966000" />
+      <workItem from="1750710770605" duration="2617000" />
+      <workItem from="1751036960174" duration="3477000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit of python Cambium">
+      <option name="closed" value="true" />
+      <created>1745330487769</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745330487769</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit of Cambium model">
+      <option name="closed" value="true" />
+      <created>1745346875830</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745346875830</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Remove spaces from cambium xml">
+      <option name="closed" value="true" />
+      <created>1745395710672</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745395710672</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Push copilot-instructions.md">
+      <option name="closed" value="true" />
+      <created>1745403897762</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745403897762</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Cambium fixed cell 30">
+      <option name="closed" value="true" />
+      <created>1745404049440</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745404049440</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add method to retrieve neighbor indices in CellBase">
+      <option name="closed" value="true" />
+      <created>1745404090169</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745404090169</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor cambium model: initialize bark_cells and update OnDivide logic for neighbor checks">
+      <option name="closed" value="true" />
+      <created>1745404111230</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745404111230</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactor cambium logic: simplify neighbor checks and cell type assignments">
+      <option name="closed" value="true" />
+      <created>1745415156208</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745415156208</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Nothing">
+      <option name="closed" value="true" />
+      <created>1745416125382</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745416125382</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add XML handling for VirtualLeaf model: implement data structure and save functionality">
+      <option name="closed" value="true" />
+      <created>1747130883995</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747130883995</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Better cambium xml model">
+      <option name="closed" value="true" />
+      <created>1747131069504</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747131069504</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Enhance cambium model: add cell type properties, improve division logic, and update cell behavior">
+      <option name="closed" value="true" />
+      <created>1747131147603</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747131147603</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add initial area calculation to CellBase: implement SetInitialArea method and add getter for InitialArea">
+      <option name="closed" value="true" />
+      <created>1747933883476</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747933883476</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add elastic modulus parameter handling: implement reading from XML and error checking">
+      <option name="closed" value="true" />
+      <created>1747933942127</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747933942127</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor cambium cell stiffness handling: adjust stiffness parameters for cell types and implement wall stiffness printing for debugging">
+      <option name="closed" value="true" />
+      <created>1747933961584</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747933961584</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Enhance debugging and cell division logic: add debug flags for wall stiffness, implement random target length for nodes, and refine cell division types with detailed logging">
+      <option name="closed" value="true" />
+      <created>1749665512372</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1749665512372</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add principal stress axis calculation and update simulation parameters: implement CalculatePrincipalStressAxis method, adjust XML parameters for simulation settings, and refine cell division type handling">
+      <option name="closed" value="true" />
+      <created>1749674318831</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1749674318831</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add lambda length getter and update cell division logic: implement GetLambdaLength method, adjust lambda length settings in CellHouseKeeping, and clean up commented code">
+      <option name="closed" value="true" />
+      <created>1751037303805</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1751037303805</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit of python Cambium" />
+    <MESSAGE value="Commit of Cambium model" />
+    <MESSAGE value="Remove spaces from cambium xml" />
+    <MESSAGE value="Push copilot-instructions.md" />
+    <MESSAGE value="Cambium fixed cell 30" />
+    <MESSAGE value="Add method to retrieve neighbor indices in CellBase" />
+    <MESSAGE value="Refactor cambium model: initialize bark_cells and update OnDivide logic for neighbor checks" />
+    <MESSAGE value="Refactor cambium logic: simplify neighbor checks and cell type assignments" />
+    <MESSAGE value="Nothing" />
+    <MESSAGE value="Add XML handling for VirtualLeaf model: implement data structure and save functionality" />
+    <MESSAGE value="Better cambium xml model" />
+    <MESSAGE value="Enhance cambium model: add cell type properties, improve division logic, and update cell behavior" />
+    <MESSAGE value="Add initial area calculation to CellBase: implement SetInitialArea method and add getter for InitialArea" />
+    <MESSAGE value="Add elastic modulus parameter handling: implement reading from XML and error checking" />
+    <MESSAGE value="Refactor cambium cell stiffness handling: adjust stiffness parameters for cell types and implement wall stiffness printing for debugging" />
+    <MESSAGE value="Enhance debugging and cell division logic: add debug flags for wall stiffness, implement random target length for nodes, and refine cell division types with detailed logging" />
+    <MESSAGE value="Add principal stress axis calculation and update simulation parameters: implement CalculatePrincipalStressAxis method, adjust XML parameters for simulation settings, and refine cell division type handling" />
+    <MESSAGE value="Add lambda length getter and update cell division logic: implement GetLambdaLength method, adjust lambda length settings in CellHouseKeeping, and clean up commented code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add lambda length getter and update cell division logic: implement GetLambdaLength method, adjust lambda length settings in CellHouseKeeping, and clean up commented code" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$export_image.coverage" NAME="export_image Coverage Results" MODIFIED="1747508679879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$run_in_batch.coverage" NAME="run_in_batch Coverage Results" MODIFIED="1747742012585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$center_poly.coverage" NAME="center_poly Coverage Results" MODIFIED="1744906311710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_XML.coverage" NAME="Change_XML Coverage Results" MODIFIED="1747779780623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$rewrite_xml.coverage" NAME="rewrite_xml Coverage Results" MODIFIED="1745400632377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
