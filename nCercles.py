@@ -1277,7 +1277,7 @@ def generer_donnees():
     rayon_0 = 200
     a = [25,25,30]
     n = len(a)+1
-    rapport_R_T = [1,1,0.5]
+    rapport_R_T = [1,0.5,0.5]
     seuil_proximite = 1
     longueur_max_cercles = 10 # Seuil pour les segments circulaires
     longueur_max_radiaux = 10 # Seuil pour les segments radiaux

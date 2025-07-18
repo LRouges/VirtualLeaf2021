@@ -1288,16 +1288,16 @@ def tracer_cellules(points, cellules):
 def generer_donnees():
 
     #1st Radius
-    rayon_0 = 60
+    rayon_0 = 300
 
     #Number of cells per rings
-    a = [16,20]
+    a = [20,20,25]
 
     # Type of cells (must be length of a) : 0 = bark, 1 = cambium 2 = Growing Xylem, 3 = Mature Xylem
-    cell_type = [2,0]
+    cell_type = [2,1,0]
 
     #ratio between width and length of initial cells, pilots radius
-    rapport_R_T = [1, 0.75]
+    rapport_R_T = [0.5,0.5,0.25]
 
     #Number of radius, length of a +1 bcs len(a) is the number of cell rings except ring 0
     n = len(a)+1

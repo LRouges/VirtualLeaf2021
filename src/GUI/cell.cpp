@@ -2346,6 +2346,7 @@ Vector Cell::CalculateDivisionPlane()
 			return long_axis;
 		}
 
+
 		case PERP_STRESS: {
 			// Calculate principal stress axis and return its perpendicular
 		    Vector max_stress_axis = CalculatePrincipalStressAxis();

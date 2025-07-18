@@ -22,15 +22,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84e5142-8f88-4da3-a897-63dab75ecc25" name="Changes" comment="Enhance cambium functionality: add node display method, improve cell type properties, and refine division logic">
-      <change beforePath="$PROJECT_DIR$/Change_XML.py" beforeDir="false" afterPath="$PROJECT_DIR$/Change_XML.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Create_new_Cambium_XML.py" beforeDir="false" afterPath="$PROJECT_DIR$/Create_new_Cambium_XML.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/leaves/Cambium_nCercles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/leaves/Cambium_nCercles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/leaves/cambium_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/leaves/cambium_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/leaves/Cambium_nCercles_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/leaves/Cambium_nCercles_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/leaves/cambium_test_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/leaves/cambium_test_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nCercles.py" beforeDir="false" afterPath="$PROJECT_DIR$/nCercles.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/cell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/cell.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/cell.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/cell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/cellbase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/cellbase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library/cellbase.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/cellbase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Cambium/cambium.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cambium/cambium.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_XML.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_XML.py" afterDir="false" />
     </list>
@@ -146,7 +143,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;PyScientificConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/Rojas/PycharmProjects/VirtualLeaf2021/data/leaves/cambium.xml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -163,7 +160,7 @@
       <recent name="C:\Users\Rojas\PycharmProjects\VirtualLeaf2021\src\python_cambium" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Shell Script.Run virtualLeaf">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -375,6 +372,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="animate.sh" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$USER_HOME$/Downloads/animate.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$USER_HOME$/Downloads" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.__main__" />
       <item itemvalue="Python.readsvg" />
@@ -383,15 +395,16 @@
       <item itemvalue="Python.nCercles" />
       <item itemvalue="Python.change bark node" />
       <item itemvalue="Python.GetBoudaryNodes" />
+      <item itemvalue="Shell Script.animate.sh" />
       <item itemvalue="Shell Script.Run virtualLeaf" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Change_XML" />
-        <item itemvalue="Python.Create_new_Cambium_XML" />
         <item itemvalue="Python.nCercles" />
         <item itemvalue="Python.change bark node" />
         <item itemvalue="Python.GetBoudaryNodes" />
+        <item itemvalue="Python.Create_new_Cambium_XML" />
+        <item itemvalue="Python.Change_XML" />
       </list>
     </recent_temporary>
   </component>
@@ -486,7 +499,21 @@
       <workItem from="1750060680697" duration="5563000" />
       <workItem from="1750069628067" duration="15088000" />
       <workItem from="1750148054038" duration="21696000" />
-      <workItem from="1750248357729" duration="3783000" />
+      <workItem from="1750248357729" duration="9897000" />
+      <workItem from="1750337430064" duration="12231000" />
+      <workItem from="1750428742403" duration="1013000" />
+      <workItem from="1750681397788" duration="2790000" />
+      <workItem from="1750771920015" duration="2158000" />
+      <workItem from="1750937379765" duration="5086000" />
+      <workItem from="1751296707440" duration="2121000" />
+      <workItem from="1751376057118" duration="8079000" />
+      <workItem from="1751897482790" duration="5143000" />
+      <workItem from="1751904413798" duration="475000" />
+      <workItem from="1751904924997" duration="104000" />
+      <workItem from="1751905096327" duration="1614000" />
+      <workItem from="1752073809725" duration="3422000" />
+      <workItem from="1752669312036" duration="4361000" />
+      <workItem from="1752836382983" duration="3717000" />
     </task>
     <task id="LOCAL-00001" summary="Update copilot instructions: enhance context awareness and clarify core library structure">
       <option name="closed" value="true" />
@@ -548,8 +575,8 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_XML.coverage" NAME="Change_XML Coverage Results" MODIFIED="1750255556574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VirtualLeaf2021$test_XML.coverage" NAME="test_XML Coverage Results" MODIFIED="1750255495971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_XML.coverage" NAME="Change_XML Coverage Results" MODIFIED="1752671649474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$test_XML.coverage" NAME="test_XML Coverage Results" MODIFIED="1752669384014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$virtualleaf_xml_model.coverage" NAME="virtualleaf_xml_model Coverage Results" MODIFIED="1747325369562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$GetBoudaryNodes.coverage" NAME="GetBoudaryNodes Coverage Results" MODIFIED="1745925255944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1748441629770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_edited/svg_to_vl" />
@@ -558,7 +585,7 @@
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$nCercles.coverage" NAME="nCercles Coverage Results" MODIFIED="1750173818063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$Change_stifness_parameter_XML.coverage" NAME="Change stifness parameter XML Coverage Results" MODIFIED="1745507618573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$empty_XML_VirtualLeaf.coverage" NAME="empty_XML_VirtualLeaf Coverage Results" MODIFIED="1747395523791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Create_new_Cambium_XML.coverage" NAME="Create_new_Cambium_XML Coverage Results" MODIFIED="1750255506411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VirtualLeaf2021$Create_new_Cambium_XML.coverage" NAME="Create_new_Cambium_XML Coverage Results" MODIFIED="1752671638897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$Creating_Cambium_XML.coverage" NAME="Creating Cambium XML Coverage Results" MODIFIED="1749656459442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$Ncouches_cambium.coverage" NAME="Ncouches cambium Coverage Results" MODIFIED="1748959283016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VirtualLeaf2021$change_bark_node.coverage" NAME="change bark node Coverage Results" MODIFIED="1745948703319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/python_cambium" />

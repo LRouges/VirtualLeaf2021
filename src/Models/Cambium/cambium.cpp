@@ -123,13 +123,13 @@ void cambium::AfficherNoeuds(CellBase *c) {
 
 
 void PrintWallStiffness(CellBase *c) {
-    qDebug() << "Cell" << c->Index() << "wall stiffness values:";
-    int wall_count = 0;
-
-    c->LoopWallElements([&wall_count](auto wallElementInfo){
-        double stiffness = wallElementInfo->getWallElement()->getStiffness();
-        qDebug() << "  Wall element" << wall_count++ << "stiffness:" << stiffness;
-    });
+//    qDebug() << "Cell" << c->Index() << "wall stiffness values:";
+//    int wall_count = 0;
+//
+//    c->LoopWallElements([&wall_count](auto wallElementInfo){
+//        double stiffness = wallElementInfo->getWallElement()->getStiffness();
+//        qDebug() << "  Wall element" << wall_count++ << "stiffness:" << stiffness;
+//    });
 }
 
 void cambium::SetCellTypeProperties(CellBase *c) { // Set cell properties
@@ -220,8 +220,11 @@ void cambium::SetCellColor(CellBase *c, QColor *color) {
 
 // Method to select which parameters ill enable division and which axis
 DivisionType cambium::DividingRules(CellBase *c, int division_rule_case) {
-    // Déterminer l'orientation radiale/tangentielle
-    auto [R, T] = DetermineRadialOrientation(c);
+    // Initialiser les variables avec des valeurs par défaut
+    double R = 0, T = 0;
+
+    // Récupérer les valeurs depuis la fonction
+    std::tie(R, T) = DetermineRadialOrientation(c);
 
     // Définir seuil et ratio selon le type de cellule
     int seuil = 2; // Valeur par défaut
@@ -229,15 +232,12 @@ DivisionType cambium::DividingRules(CellBase *c, int division_rule_case) {
 
     if (c->CellType() == 0) {
         seuil = 10;
-        ratio = 2;
     }
     else if (c->CellType() == 1) {
-        seuil = 1;
-        ratio = 1;
+        seuil = 2;
     }
-    else if (c->CellType() == 2) {
-        seuil = 1;
-        ratio = 1;
+    else if (c->CellType() == 2){
+        seuil = 2;
     }
 
 
@@ -245,69 +245,114 @@ DivisionType cambium::DividingRules(CellBase *c, int division_rule_case) {
     Vector radial_axis = axis;
     Vector tangential_axis = axis.Perp2D();
 
+
     // Vérifier si la cellule dépasse le seuil de croissance
-    bool growth_condition = c->Area() > 800*seuil;
+    double initial_area = c->GetInitialArea();
+    bool growth_condition = false;
+
+    if (c-> Area() > 1500){
+        growth_condition = true;
+    }
+    else if (c-> Area() < 1500) {
+        growth_condition = c->Area() > initial_area * seuil;
+    }
+
 
     // Vérifier les conditions de ratio
-    bool tangential_biased = (T > 0 && T/R > ratio);
-    bool radial_biased = (R > 0 && R/T > ratio);
-
+    std::cout << "Ratio R/T = " << R/T <<" ";
+    std::cout << "Growth_condition = " << growth_condition << " ";
     // Traiter selon le cas de règle de division
     switch(division_rule_case) {
-        case 1: // Division basée uniquement sur la croissance
+        case 1: // Division plus petit axe basée uniquement sur la croissance
             if (growth_condition) {
-                std::cout << "Cellule " << c->Index() << ": Cas 1 - Division par seuil de taille" << std::endl;
+                std::cout << "Cellule " << c->Index() << ": Cas 1 - Division petit axe (Seuil de croissance atteint)" << std::endl;
+                c->SetDivisionType(SHORT_AXIS); // Short axis
+                c->Divide();
+            }
+            break;
+        case 2: // Division plus grand axe basée uniquement sur la croissance
+            if (growth_condition) {
+                std::cout << "Cellule " << c->Index() << ": Cas 1 - Division plus grand axe (Seuil de croissance atteint)" << std::endl;
+                c->SetDivisionType(LONG_AXIS); // Long axis
+                c->Divide();
+            }
+            break;
+        case 3: // Division axe aléatoire basée uniquement sur la croissance
+            if (growth_condition) {
+                std::cout << "Cellule " << c->Index() << ": Cas 1 - Division axe aléatoire (Seuil de croissance atteint)" << std::endl;
+                c->SetDivisionType(RANDOM_DIVISION); // Random axis
+                c->Divide();
+            }
+            break;
+
+        case 4: // Division radiale ou tangentielle basée uniquement sur la croissance
+            if (growth_condition) {
+                if (R/T < 0.25) { // Division selon l'axe radial (cellules plus allongées tangentiellement qu zradialement )
+                    std::cout << "Cellule " << c->Index() << ": Cas 2 - Division radiale (Seuil de croissance atteint)" << std::endl;
+                    c->DivideOverAxis(radial_axis);
+                }
+                else if (R/T > 0.5) {// Division selon l'axe tangentiel (cellule allongée radialement)
+                    std::cout << "Cellule " << c->Index() << ": Cas 2 - Division tangentielle (Seuil de croissance atteint)" << std::endl;
+                    c->DivideOverAxis(tangential_axis);
+                }
+            }
+            break;
+        case 5: // Division axe contrainte basée uniquement sur la croissance
+            if (growth_condition) {
+                std::cout << "Cellule " << c->Index() << ": Cas 1 - Division axe contrainte (Seuil de croissance atteint)" << std::endl;
+                c->SetDivisionType(PERP_STRESS); //Stess axis
+                c->Divide();
+            }
+            break;
+
+        case 6: // Division plus petit axe selon le ratio R/T uniquement
+            if  ((R/T > 0.5) || (R/T < 0.25)) {
+                std::cout << "Cellule " << c->Index() << ": Cas 4 - Division basée sur le plsu petit axe (ratio R/T > seuil)" << std::endl;
                 c->SetDivisionType(SHORT_AXIS);
                 c->Divide();
             }
             break;
 
-        case 2: // Division basée uniquement sur le ratio T/R
-            if (tangential_biased || radial_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 2 - Division par ratio T/R" << std::endl;
-                c->SetDivisionType(SHORT_AXIS);
-                c->Divide();
-            }
-            break;
-
-        case 3: // Division radiale ou tangentielle selon le ratio
-            if (tangential_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 3 - Division radiale (T/R > seuil)" << std::endl;
-                c->DivideOverAxis(radial_axis);
-            } else if (radial_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 3 - Division tangentielle (R/T > seuil)" << std::endl;
+        case 7: // Division radiale ou tangentielle selon le ratio R/T uniquement
+            if (R/T > 0.5) {
+                std::cout << "Cellule " << c->Index() << "Division radiale (R/T > 0.5)" << std::endl;
                 c->DivideOverAxis(tangential_axis);
             }
+            else if (R/T < 0.25) {
+                std::cout << " Cellule " << c->Index() << "Division tangentielle (R/T <0.25>)" << std::endl;
+                c->DivideOverAxis(radial_axis);
+            }
             break;
 
-        case 4: // Division selon l'axe de stress
-            if (tangential_biased || radial_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 4 - Division basée sur les contraintes" << std::endl;
+        case 8: // Division selon l'axe de contrainte  selon le ratio R/T uniquement
+            if ((R/T > 0.5) || (R/T < 0.25)) {
+                std::cout << "Cellule " << c->Index() << ": Cas 4 - Division basée sur les contraintes (ratio R/T > seuil)" << std::endl;
                 c->SetDivisionType(MAX_STRESS_AXIS);
                 c->Divide();
             }
             break;
 
-        case 5: // Division basée sur croissance ET ratio
-            if ((growth_condition && tangential_biased) || (growth_condition && radial_biased)) {
-                std::cout << "Cellule " << c->Index() << ": Cas 5 - Division par taille et ratio" << std::endl;
+        case 9: // Division basée sur croissance ET ratio
+            if ((growth_condition && (R/T >0.5)) || (growth_condition && (R/T < 0.25))) {
+                std::cout << "Cellule " << c->Index() << ": Cas 5 - Division petit axe (taille et ratio > seuils)" << std::endl;
                 c->SetDivisionType(SHORT_AXIS);
-                c->Divide(); // J'ai choisi division aléatoire
+                c->Divide();
             }
             break;
 
-        case 6: // Division radiale/tangentielle basée sur croissance ET ratio
-            if (growth_condition && tangential_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 6 - Division radiale (croissance + T/R)" << std::endl;
-                c->DivideOverAxis(radial_axis);
-            } else if (growth_condition && radial_biased) {
-                std::cout << "Cellule " << c->Index() << ": Cas 6 - Division tangentielle (croissance + R/T)" << std::endl;
+        case 10: // Division radiale/tangentielle basée sur croissance ET ratio
+            if (growth_condition && (R/T >0.5)) {
+                std::cout << "Cellule " << c->Index() << ": Cas 6 - Division radiale (croissance + T/R)" << "tangential axis : "<< tangential_axis << std::endl;
                 c->DivideOverAxis(tangential_axis);
             }
+            else if (growth_condition && (R/T < 0.25)) {
+                std::cout << "Cellule " << c->Index() << ": Cas 6 - Division tangentielle (croissance + R/T)" << "radial axis : "<< radial_axis << std::endl;
+                c->DivideOverAxis(radial_axis);
+            }
             break;
 
-        case 7: // Division selon l'axe de stress basée sur croissance ET ratio
-            if ((growth_condition && tangential_biased) || (growth_condition && radial_biased)) {
+        case 11: // Division selon l'axe de stress basée sur croissance ET ratio
+            if ((growth_condition && (R/T >0.5)) || (growth_condition && (R/T < 0.25))) {
                 std::cout << "Cellule " << c->Index() << ": Cas 7 - Division par contraintes (croissance + ratio)" << std::endl;
                 c->SetDivisionType(MAX_STRESS_AXIS);
                 c->Divide();
@@ -324,10 +369,6 @@ DivisionType cambium::DividingRules(CellBase *c, int division_rule_case) {
 }
 
 
-
-
-
-
 void cambium::CellHouseKeeping(CellBase *c) {
     SetCellTypeProperties(c);
     PrintWallStiffness(c);
@@ -336,8 +377,7 @@ void cambium::CellHouseKeeping(CellBase *c) {
 //    qDebug() << "Cellule" << c->Index() << "de type" << c->CellType() << "- Aire:" << c->Area();
 //    qDebug() << "  Voisins de la cellule" << c->Index() << ":";
 
-    int division_type = 1;
-    auto [R, T] = DetermineRadialOrientation(c);
+    int division_type = 7;
     std::vector<int> neighbors = c->GetNeighborIndices();
 
     bool has_index_0 = false;
@@ -356,7 +396,7 @@ void cambium::CellHouseKeeping(CellBase *c) {
         c->SetInitialArea();
         initialized_cells.insert(c->Index());
     }
-
+    double initial_area = c->GetInitialArea();
     UpdateCellTypeLists(c->Index(), c->CellType());
         // Ne pas lancer les regles tant que toutes les cellules ne sont pas initialisées dans le cell registry
         for (int idx : neighbors) {
@@ -411,12 +451,12 @@ void cambium::CellHouseKeeping(CellBase *c) {
             UpdateCellTypeLists(c->Index(), 1);
             return;
         }
-        // Si entouré de type 0 et 2 (a desactiver pour le cambium simple de type 2, sinon transfo direct en ecorce)
-        else if (has_type0_neighbor &&  !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor) {
-            c->SetCellType(1);
-            UpdateCellTypeLists(c->Index(), 1);
-            return;
-        }
+//        // Si entouré de type 0 et 2
+//        else if (has_type0_neighbor &&  !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor) {
+//            c->SetCellType(1);
+//            UpdateCellTypeLists(c->Index(), 1);
+//            return;
+//        }
                 // Si entouré de type 0 1 et 2
         else if (has_type0_neighbor &&  has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor) {
             c->SetCellType(1);
@@ -426,7 +466,7 @@ void cambium::CellHouseKeeping(CellBase *c) {
 
         else {
             c->EnlargeTargetArea(par->cell_expansion_rate*1);
-            DividingRules(c, division_type);
+
         }
     }
 
@@ -460,20 +500,31 @@ void cambium::CellHouseKeeping(CellBase *c) {
             UpdateCellTypeLists(c->Index(), 2);
             return;
         }
+        // Si voisins type 1 2 4
+        else if (!has_type0_neighbor && has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
+            return;
+        }
 
         else {
-            c->EnlargeTargetArea(par->cell_expansion_rate*1);
-            DividingRules(c, division_type);
+          c->EnlargeTargetArea(par->cell_expansion_rate*1.8);
+          DividingRules(c, division_type);
         }
     }
 
+
     else if (c->CellType() == 2) { // Xylem Cambium
-
-
         // Si entourées uniquement par type 1
         if (!has_type0_neighbor && !has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor) {
             c->SetCellType(1);
             UpdateCellTypeLists(c->Index(), 1);
+            return;
+        }
+        // Si entourées uniquement par type 2
+        else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor && !has_index_0) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
             return;
         }
         // Si entourées uniquement par type 3
@@ -495,6 +546,7 @@ void cambium::CellHouseKeeping(CellBase *c) {
             UpdateCellTypeLists(c->Index(), 2);
             return;
         }
+
         // Si entourée uniquement par type 3 et 4
         else if (!has_type0_neighbor && !has_type1_neighbor && !has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
             c->SetCellType(3);
@@ -508,28 +560,36 @@ void cambium::CellHouseKeeping(CellBase *c) {
             UpdateCellTypeLists(c->Index(), 3);
             return;
         }
+        // Si entouré type 1 3 et 4 (=! indice 0)
+        else if (!has_type0_neighbor && has_type1_neighbor && !has_type2_neighbor && has_type3_neighbor && has_type4_neighbor && !has_index_0) {
+            c->SetCellType(3);
+            UpdateCellTypeLists(c->Index(), 3);
+            return;
+        }
         // Si entouré type 2 3 et 4 (=! indice 0)
         else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && has_type4_neighbor && !has_index_0) {
             c->SetCellType(3);
             UpdateCellTypeLists(c->Index(), 3);
             return;
         }
-        else if (!has_type0_neighbor && !has_type1_neighbor && count_type3_neighbors > 2 && has_type2_neighbor && has_type3_neighbor && !has_type4_neighbor && !has_index_0) {
+        //Si entouré de type 2 et de plus de 2 cellules de type 3
+        else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && count_type3_neighbors > 2 && !has_type4_neighbor && !has_index_0) {
             c->SetCellType(3);
             UpdateCellTypeLists(c->Index(), 3);
             return;
         }
-        else if (!has_type0_neighbor && !has_type1_neighbor && count_type3_neighbors >= 2 && count_type2_neighbors >=2 && has_type2_neighbor && has_type3_neighbor && !has_type4_neighbor && !has_index_0) {
+        //Si entouré de plus de 2 cellules de type 2 et 3
+        else if (!has_type0_neighbor && !has_type1_neighbor && count_type2_neighbors >=2 && has_type2_neighbor && has_type3_neighbor && count_type3_neighbors >= 2 && !has_type4_neighbor && !has_index_0) {
             c->SetCellType(3);
             UpdateCellTypeLists(c->Index(), 3);
             return;
         }
-        else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor && !has_index_0) {
+        //Si entouré de type 2 et collé à la cellule 0
+        else if (!has_type0_neighbor && !has_type1_neighbor && count_type2_neighbors > 2 && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor && has_index_0) {
             c->SetCellType(3);
             UpdateCellTypeLists(c->Index(), 3);
             return;
         }
-
         else {
             c->EnlargeTargetArea(par->cell_expansion_rate*2);
             DividingRules(c, division_type);
@@ -538,44 +598,64 @@ void cambium::CellHouseKeeping(CellBase *c) {
 
     else if (c->CellType() == 3) { // Growing Xylem
 
+
+        // Si entourée par un type 4
+        if (!has_type0_neighbor && !has_type1_neighbor && !has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor) {
+            c->SetCellType(4);
+            UpdateCellTypeLists(c->Index(), 4);
+            return;
+        }
+
         // Si entourée par un type 1 et 2
         if (!has_type0_neighbor && has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && !has_type4_neighbor) {
             c->SetCellType(2);
             UpdateCellTypeLists(c->Index(), 2);
             return;
         }
-
+        // Si entouré par 2 et 4
+        else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor) {
+            c->SetCellType(3);
+            UpdateCellTypeLists(c->Index(), 3);
+            return;
+        }
         // Si entourée par un type 1 2 et 3
         else if (!has_type0_neighbor && has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && !has_type4_neighbor) {
             c->SetCellType(2);
             UpdateCellTypeLists(c->Index(), 2);
             return;
         }
-//        // Si entourée par un type 0 2 3 et 4 (à activer pour le cambium simple)
-//        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
-//            c->SetCellType(2);
-//            UpdateCellTypeLists(c->Index(), 2);
-//            return;
-//        }
-//        // Si entourée par un type 0 2 3 (à activer pour le cambium simple)
-//        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && !has_type4_neighbor) {
-//            c->SetCellType(2);
-//            UpdateCellTypeLists(c->Index(), 2);
-//            return;
-//        }
-//                // Si entourée par un type 0 2 4 (à activer pour le cambium simple)
-//        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor && count_type2_neighbors > 2) {
-//            c->SetCellType(2);
-//            UpdateCellTypeLists(c->Index(), 2);
-//            return;
-//        }
+                // Si entourée par un type 1 3 et 4
+        else if (!has_type0_neighbor && has_type1_neighbor && !has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
+            return;
+        }
 
-                // Si entourée par un type 1,2,4
+        // Si entourée par un type 0 2 3 et 4
+        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
+            return;
+        }
+        // Si entourée par un type 0 2 3
+        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && !has_type4_neighbor) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
+            return;
+        }
+                // Si entourée par un type 0 2 4
+        else if (has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor && count_type2_neighbors > 2) {
+            c->SetCellType(2);
+            UpdateCellTypeLists(c->Index(), 2);
+            return;
+        }
+                        // Si entourée par un type 1 2 4
         else if (!has_type0_neighbor && has_type1_neighbor && has_type2_neighbor && !has_type3_neighbor && has_type4_neighbor) {
             c->SetCellType(2);
             UpdateCellTypeLists(c->Index(), 2);
             return;
         }
+
         // Si entourée par un type 1 3 et 4
         else if (!has_type0_neighbor && has_type1_neighbor && !has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
             c->SetCellType(2);
@@ -583,41 +663,34 @@ void cambium::CellHouseKeeping(CellBase *c) {
             return;
         }
 
-//        // Si entourée par un type 2 3 et 4 ( à activer pour le cambium simple)
+//        // Si entourée par un type 2 3 et 4
 //        else if (!has_type0_neighbor && !has_type1_neighbor && has_type2_neighbor && has_type3_neighbor && has_type4_neighbor) {
 //            c->SetCellType(2);
 //            UpdateCellTypeLists(c->Index(), 2);
 //            return;
-//        }
         else{
 
-            if (c->Area() < 4000) {
-                c->EnlargeTargetArea(par->cell_expansion_rate*2);
+            //  Croissance uniquement
+            if (c->Area() < 1500*3) {
+                c->EnlargeTargetArea(par->cell_expansion_rate*10);
                 return;
             }
-
-            else if (T > 0 && R/T > 3 && c->Area() < 4000 ) {
-                c->SetCellType(4);
-                UpdateCellTypeLists(c->Index(),4);
-                return;
-            }
-
             else {
                 c->SetCellType(4);    // Debug pour afficher les informations sur la cellule et ses voisins
                 UpdateCellTypeLists(c->Index(),4);
                 return;
             }
         }
-
     }
     else if (c->CellType() == 4) { // Mature Xylem
         // Aucune croissance ou division pour les cellules de type 4
         // Ce sont des cellules finales/terminales
-        if (c->Area() < 4000) {
-                c->EnlargeTargetArea(par->cell_expansion_rate*5);
-        return;
+        for (list<Node *>::const_iterator it = c->getNodes().begin();
+             it != c->getNodes().end(); ++it) {
+            (*it)->Fix();
         }
     }
+
 }
 
 
@@ -632,7 +705,7 @@ void cambium::OnDivide(ParentInfo *parent_info, CellBase *daughter1, CellBase *d
     double d2 = (daughter2->Centroid() - tissue_center).Norm();
 
     // Tolérance pour "proche"
-    double tol = 0.05 * d_parent; // 5% de la distance du parent
+    double tol = 0.01 * d_parent; // 5% de la distance du parent
 
     int ParentCellType = parent_info->ParentCellType;
 //    qDebug() <<"Parent type"<< parent_info->ParentCellType;
@@ -730,8 +803,12 @@ void cambium::UpdateCellTypeLists(int idx, int type) {
 
 
 std::pair<double, double> cambium::DetermineRadialOrientation(CellBase *c) {
+    // Déclarer des variables par défaut
+    double length = 0, width = 0;
+    Vector long_axis;
+
     // Récupérer les dimensions et l'axe principal de la cellule
-    auto [length, width, long_axis] = c->GetLengthAndWidthWithAxis();
+    std::tie(length, width, long_axis) = c->GetLengthAndWidthWithAxis();
 
     // Calculer le vecteur radial (du centre 0,0 vers le centre de la cellule)
     Vector radial_vector = c->Centroid();
